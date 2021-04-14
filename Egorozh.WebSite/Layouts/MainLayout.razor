@@ -1,12 +1,64 @@
 ﻿@inherits LayoutComponentBase
 
 <Grid Height="100vh"
-      RowDefinitions="* auto *"
-      ColumnDefinitions="* auto *">
+      RowDefinitions="auto * auto"
+      ColumnDefinitions="auto * auto">
+
+    <GridChild Row="1" RowSpan="2"
+               Column="1">
+        <a href="about">
+            <div style="background-color: var(--independence); height: 100%; margin: -32px 0px;">
+                <h1>Обо мне</h1>
+            </div>
+        </a>
+    </GridChild>
+
+    <GridChild Row="1"
+               Column="2"
+               style="background-color: var(--maximum-blue-green);">
+        <h1>Мои проекты</h1>
+    </GridChild>
+
+    <GridChild Row="3"
+               Column="2"
+               style="background-color: var(--space-cadet); height: 100%;">
+        <h1>Контакты</h1>
+    </GridChild>
+
+    <GridChild Row="2" RowSpan="2"
+               Column="3"
+               style="background-color: orange; height: 100%;">
+        <h1>Хобби</h1>
+    </GridChild>
+
+    <GridChild Row="1"
+               Column="3">
+        <a href=" https://www.youtube.com/channel/UCWCJJPy6o9E6ZoWTnF6JKsQ"
+           target="_blank"
+           title="Ссылка на канал YouTube">
+            <img src="img/youtube.svg"
+                 style="width: 256px; height: 256px; margin: -8px 0px;">
+        </a>
+    </GridChild>
+
+    <GridChild Row="3"
+               Column="1">
+        <a href="https://github.com/egorozh" target="_blank"
+           title="Ссылка на профиль GitHub">
+            <img src="img/Octocat.png"
+                 style="width: 256px; height: 256px;">
+        </a>
+    </GridChild>
 
     <GridChild Row="2"
                Column="2">
-        @Body
+        <Grid RowDefinitions="* auto *"
+              ColumnDefinitions="* auto *">
+            <GridChild Row="2"
+                       Column="2">
+                @Body
+            </GridChild>
+        </Grid>
     </GridChild>
 
 </Grid>
