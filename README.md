@@ -1,2 +1,2 @@
 # Egorozh.WebSite
-https://egorozh.ru repository
+https://egorozh.ru source repository
