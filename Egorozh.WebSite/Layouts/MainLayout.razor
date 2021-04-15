@@ -1,34 +1,67 @@
 ﻿@inherits LayoutComponentBase
 
+@inject NavigationManager _navigation
+
 <Grid Height="100vh"
       RowDefinitions="auto * auto"
-      ColumnDefinitions="auto * auto">
+      ColumnDefinitions="auto * auto"
+      ItemGap="14px">
 
     <GridChild Row="1" RowSpan="2"
-               Column="1">
-        <a href="about">
-            <div style="background-color: var(--independence); height: 100%; margin: -32px 0px;">
-                <h1>Обо мне</h1>
-            </div>
-        </a>
+               Column="1"
+               style="background-color: #ffbe1a; height: 100%;">
+      
+        <NavLink href="about" ActiveClass="nav-link-active">
+            <Grid RowDefinitions="* auto *"
+                  ColumnDefinitions="* auto *">
+                <GridChild Row="2"
+                           Column="2">
+                    <h1>Обо мне</h1>
+                </GridChild>
+            </Grid>
+        </NavLink>
     </GridChild>
 
     <GridChild Row="1"
                Column="2"
-               style="background-color: var(--maximum-blue-green);">
-        <h1>Мои проекты</h1>
+               style="background-color: #CC181E; height: 100%;">
+        <NavLink href="projects">
+            <Grid RowDefinitions="* auto *"
+                  ColumnDefinitions="* auto *">
+                <GridChild Row="2"
+                           Column="2">
+                    <h1>Мои проекты</h1>
+                </GridChild>
+            </Grid>
+        </NavLink>
     </GridChild>
 
     <GridChild Row="3"
                Column="2"
-               style="background-color: var(--space-cadet); height: 100%;">
-        <h1>Контакты</h1>
+               style="background-color: #ffbe1a; height: 100%;">
+        <NavLink href="contacts">
+            <Grid RowDefinitions="* auto *"
+                  ColumnDefinitions="* auto *">
+                <GridChild Row="2"
+                           Column="2">
+                    <h1>Контакты</h1>
+                </GridChild>
+            </Grid>
+        </NavLink>
     </GridChild>
 
     <GridChild Row="2" RowSpan="2"
                Column="3"
-               style="background-color: orange; height: 100%;">
-        <h1>Хобби</h1>
+               style="background-color: #CC181E; height: 100%;">
+        <NavLink href="hobby">
+            <Grid RowDefinitions="* auto *"
+                  ColumnDefinitions="* auto *">
+                <GridChild Row="2"
+                           Column="2">
+                    <h1>Хобби</h1>
+                </GridChild>
+            </Grid>
+        </NavLink>
     </GridChild>
 
     <GridChild Row="1"
@@ -37,12 +70,13 @@
            target="_blank"
            title="Ссылка на канал YouTube">
             <img src="img/youtube.svg"
-                 style="width: 256px; height: 256px; margin: -8px 0px;">
+                 style="width: 256px; height: 256px;">
         </a>
     </GridChild>
 
     <GridChild Row="3"
-               Column="1">
+               Column="1"
+               style="background-color: #0041C4;">
         <a href="https://github.com/egorozh" target="_blank"
            title="Ссылка на профиль GitHub">
             <img src="img/Octocat.png"
