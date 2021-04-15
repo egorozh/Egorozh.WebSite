@@ -1,2 +1,3 @@
 # Egorozh.WebSite
-My personal web-site repository
+[My personal website](https://egorozh.ru) source repository
+
