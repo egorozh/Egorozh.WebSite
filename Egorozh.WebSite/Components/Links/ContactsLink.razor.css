@@ -1,0 +1,9 @@
+﻿button {
+    background-color: #ffbe1a;
+    color: var(--oxford-blue)
+}
+
+button:hover {
+    background-color: #ffcf1f;
+    color: var(--youtube-red);
+}

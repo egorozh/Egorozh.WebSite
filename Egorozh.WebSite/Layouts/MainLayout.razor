@@ -8,80 +8,33 @@
       ItemGap="14px">
 
     <GridChild Row="1" RowSpan="2"
-               Column="1"
-               style="background-color: #ffbe1a; height: 100%;">
-      
-        <NavLink href="about" ActiveClass="nav-link-active">
-            <Grid RowDefinitions="* auto *"
-                  ColumnDefinitions="* auto *">
-                <GridChild Row="2"
-                           Column="2">
-                    <h1>Обо мне</h1>
-                </GridChild>
-            </Grid>
-        </NavLink>
+               Column="1">
+        <AboutLink/>
     </GridChild>
 
     <GridChild Row="1"
-               Column="2"
-               style="background-color: #CC181E; height: 100%;">
-        <NavLink href="projects">
-            <Grid RowDefinitions="* auto *"
-                  ColumnDefinitions="* auto *">
-                <GridChild Row="2"
-                           Column="2">
-                    <h1>Мои проекты</h1>
-                </GridChild>
-            </Grid>
-        </NavLink>
+               Column="2">
+        <ProjectsLink/>
     </GridChild>
 
     <GridChild Row="3"
-               Column="2"
-               style="background-color: #ffbe1a; height: 100%;">
-        <NavLink href="contacts">
-            <Grid RowDefinitions="* auto *"
-                  ColumnDefinitions="* auto *">
-                <GridChild Row="2"
-                           Column="2">
-                    <h1>Контакты</h1>
-                </GridChild>
-            </Grid>
-        </NavLink>
+               Column="2">
+        <ContactsLink/>
     </GridChild>
 
     <GridChild Row="2" RowSpan="2"
-               Column="3"
-               style="background-color: #CC181E; height: 100%;">
-        <NavLink href="hobby">
-            <Grid RowDefinitions="* auto *"
-                  ColumnDefinitions="* auto *">
-                <GridChild Row="2"
-                           Column="2">
-                    <h1>Хобби</h1>
-                </GridChild>
-            </Grid>
-        </NavLink>
+               Column="3">
+        <HobbyLink/>
     </GridChild>
 
     <GridChild Row="1"
                Column="3">
-        <a href=" https://www.youtube.com/channel/UCWCJJPy6o9E6ZoWTnF6JKsQ"
-           target="_blank"
-           title="Ссылка на канал YouTube">
-            <img src="img/youtube.svg"
-                 style="width: 256px; height: 256px;">
-        </a>
+        <YoutubeLink/>
     </GridChild>
 
     <GridChild Row="3"
-               Column="1"
-               style="background-color: #0041C4;">
-        <a href="https://github.com/egorozh" target="_blank"
-           title="Ссылка на профиль GitHub">
-            <img src="img/Octocat.png"
-                 style="width: 256px; height: 256px;">
-        </a>
+               Column="1">
+        <GithubLink/>
     </GridChild>
 
     <GridChild Row="2"

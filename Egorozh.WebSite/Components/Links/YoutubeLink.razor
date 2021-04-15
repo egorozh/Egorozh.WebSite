@@ -1,0 +1,29 @@
+﻿@inject NavigationManager _navigation
+
+<div>
+    <a href="https://www.youtube.com/channel/UCWCJJPy6o9E6ZoWTnF6JKsQ" target="_blank"
+       title="Ссылка на канал YouTube">
+        <img src="img/youtube.svg"
+             class="@_imgClass">
+
+    </a>
+</div>
+
+@code {
+
+    private string _imgClass = "h";
+
+    protected override void OnInitialized()
+    {
+        _navigation.LocationChanged += (_, _) =>
+        {
+            _imgClass = _navigation.Uri != _navigation.BaseUri ? "home-github" : "";
+            base.StateHasChanged();
+        };
+
+
+        base.OnInitialized();
+    }
+
+
+}

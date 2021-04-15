@@ -1,0 +1,35 @@
+﻿@inject NavigationManager _navigation
+
+<button @onclick=@(() => _navigation.NavigateTo(_isActive ? "/" : "about"))
+        class="@(!_isMain ? "home-about" : "")">
+    @if (_isActive)
+    {
+        <h2>На главную</h2>
+    }
+    else
+    {
+        <h2>Обо мне</h2>
+    }
+</button>
+
+@code {
+
+    bool _isActive;
+    bool _isMain = true;
+
+
+    protected override void OnInitialized()
+    {
+        _navigation.LocationChanged += NavigationOnLocationChanged;
+
+        base.OnInitialized();
+    }
+
+    private void NavigationOnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        _isActive = _navigation.Uri.Contains("about");
+        _isMain = _navigation.Uri == _navigation.BaseUri;
+        base.StateHasChanged();
+    }
+
+}

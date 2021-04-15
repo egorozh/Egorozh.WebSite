@@ -1,0 +1,7 @@
+﻿div {
+    background-color: var(--github-blue);
+}
+
+div:hover {
+    background-color: #005ada;
+}
