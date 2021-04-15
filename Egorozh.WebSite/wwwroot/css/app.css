@@ -81,6 +81,11 @@ button:focus { outline: 0; }
 img {
     width: 256px;
     height: 256px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .home-github {
@@ -88,6 +93,62 @@ img {
     height: 60px;
 }
 
-.home-contacts {
-    height: 65px;
+.home-contacts { height: 65px; }
+
+#about {
+    grid-column: 1/span 1;
+    grid-row: 1/span 2;
+}
+
+#projects {
+    grid-column: 2/span 1;
+    grid-row: 1/span 1;
+}
+
+#contacts { }
+
+#hobby {
+    grid-column: 3/span 1;
+    grid-row: 2/span 2;
+}
+
+#youtube {
+    grid-column: 3/span 1;
+    grid-row: 1/span 1;
+
+    background-color: var(--youtube-red);
+}
+
+#youtube:hover { background-color: #dd222f; }
+
+#github { background-color: var(--github-blue); }
+
+#github:hover { background-color: #005ada; }
+
+@media screen and (max-width: 960px) {
+    #body { display: none; }
+
+    #about {
+        grid-column: 1/span 1;
+        grid-row: 1/span 1;
+    }
+
+    #projects {
+        grid-column: 1/span 1;
+        grid-row: 2/span 1;
+    }
+
+    #contacts { }
+
+    #hobby {
+        grid-column: 2/span 1;
+        grid-row: 2/span 1;
+    }
+
+    #youtube {
+        grid-column: 2/span 1;
+        grid-row: 1/span 1;
+    }
+
+    #github { }
 }

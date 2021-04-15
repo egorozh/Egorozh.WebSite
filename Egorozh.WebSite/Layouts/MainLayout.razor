@@ -2,43 +2,38 @@
 
 @inject NavigationManager _navigation
 
-<Grid Height="100vh"
-      RowDefinitions="auto * auto"
-      ColumnDefinitions="auto * auto"
-      ItemGap="14px">
-
-    <GridChild Row="1" RowSpan="2"
-               Column="1">
+<main>
+    <div id="about">
         <AboutLink/>
-    </GridChild>
+    </div>
 
-    <GridChild Row="1"
-               Column="2">
+    <div id="projects">
         <ProjectsLink/>
-    </GridChild>
+    </div>
 
     <GridChild Row="3"
-               Column="2">
+               Column="2"
+               id="contacts">
         <ContactsLink/>
     </GridChild>
 
-    <GridChild Row="2" RowSpan="2"
-               Column="3">
+    <div id="hobby">
         <HobbyLink/>
-    </GridChild>
+    </div>
 
-    <GridChild Row="1"
-               Column="3">
+    <div id="youtube">
         <YoutubeLink/>
-    </GridChild>
+    </div>
 
     <GridChild Row="3"
-               Column="1">
+               Column="1"
+               id="github">
         <GithubLink/>
     </GridChild>
 
     <GridChild Row="2"
-               Column="2">
+               Column="2"
+               id="body">
         <Grid RowDefinitions="* auto *"
               ColumnDefinitions="* auto *">
             <GridChild Row="2"
@@ -47,5 +42,4 @@
             </GridChild>
         </Grid>
     </GridChild>
-
-</Grid>
+</main>
