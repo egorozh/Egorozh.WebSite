@@ -9,6 +9,7 @@
 #body {
     grid-column: 2/span 1;
     grid-row: 2/span 1;
+    background-color: var(--fifth);
 }
 
 #about {
@@ -47,46 +48,29 @@
 
 #github:hover { background-color: var(--fourth-hover); }
 
-#about > button {
-    background-color: var(--third);
-    color: var(--oxford-blue)
-}
+#about > button { background-color: var(--third); }
 
-#about > button:hover {
-    background-color: var(--third-hover);
-    color: var(--first);
-}
+#about > button:hover { background-color: var(--third-hover); }
 
-#projects > button {
-    background-color: var(--second);
-    color: white
-}
+#about > button:hover > h2 { color: var(--third); }
 
-#projects > button:hover {
-    background-color: var(--second-hover);
-    color: var(--third);
-}
+#projects > button { background-color: var(--second); }
 
-#contacts > button {
-    background-color: var(--third);
-    color: var(--oxford-blue)
-}
+#projects > button:hover { background-color: var(--second-hover); }
 
-#contacts > button:hover {
-    background-color: var(--third-hover);
-    color: var(--first);
-}
+#projects > button:hover > h2 { color: var(--second); }
 
-#hobby > button {
-    background-color: var(--second);
-    color: white
-}
+#contacts > button { background-color: var(--third); }
 
-#hobby > button:hover {
-    background-color: var(--second-hover);
-    color: var(--third);
-}
+#contacts > button:hover { background-color: var(--third-hover); }
 
+#contacts > button:hover > h2 { color: var(--third); }
+
+#hobby > button { background-color: var(--second); }
+
+#hobby > button:hover { background-color: var(--second-hover); }
+
+#hobby > button:hover > h2 { color: var(--second); }
 
 @media screen and (max-width: 960px) {
     #main {

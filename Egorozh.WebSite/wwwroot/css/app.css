@@ -13,7 +13,8 @@
     --third-hover: #FF78DF;
     --fourth: #5E4685;
     --fourth-hover: #C293FF;
-    --oxford-blue: #0b132b;
+    --fifth: #344C75;
+    --sixth: #2F4858;
     --turquoise-blue: #6fffe9;
 }
 
@@ -22,11 +23,14 @@ html, body {
     font-family: 'DotGothic16';
     font-weight: normal;
     font-style: normal;
-    background-color: var(--oxford-blue);
-    color: whitesmoke
+    background-color: var(--sixth);
+    color: white
 }
 
-h1, h2 { font-family: 'Press Start 2P'; }
+h1, h2 {
+    font-family: 'Press Start 2P';
+    color: white;
+}
 
 .content { padding-top: 1.1rem; }
 
@@ -77,26 +81,55 @@ button {
 
 button:focus { outline: 0; }
 
-.home-about { width: 60px; }
+.home-about { animation: 0.5s linear 0s forwards reduce_width; }
 
-.home-about > h2 {
-    writing-mode: vertical-lr;
-    /*-webkit-transform: rotate(-90deg);*/
+@keyframes reduce_width {
+    from { width: 256px; }
+
+    to { width: 60px; }
 }
+
+.home-about > h2 { writing-mode: vertical-lr; }
 
 img {
-    width: 256px;
-    height: 256px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    animation: 0.5s linear 0s forwards enlarge_img;
 }
 
-.home-github {
-    width: 60px;
-    height: 60px;
+.home-github { animation: 0.5s linear 0s forwards reduce_img; }
+
+@keyframes reduce_img {
+    from {
+        width: 240px;
+        height: 240px;
+        margin: 16px;
+    }
+
+    to {
+        width: 52px;
+        height: 52px;
+        margin: 4px;
+    }
 }
 
-.home-contacts { height: 65px; }
+@keyframes enlarge_img {
+    from {
+        width: 52px;
+        height: 52px;
+        margin: 4px;
+    }
+
+    to {
+        width: 240px;
+        height: 240px;
+        margin: 16px;
+    }
+}
+
+.home-contacts { animation: 0.5s linear 0s forwards reduce_height; }
+
+@keyframes reduce_height {
+    from { height: 256px; }
+
+    to { height: 65px; }
+}
