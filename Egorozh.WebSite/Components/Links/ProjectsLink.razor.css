@@ -1,9 +1,0 @@
-﻿button {
-    background-color: var(--youtube-red);
-    color: white
-}
-
-button:hover {
-    background-color: #dd222f;
-    color: #ffbe1a;
-}

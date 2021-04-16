@@ -2,11 +2,19 @@
 
 @import url(others/fonts.css);
 
+@import url(others/links.css);
+
 :root {
+    --first: #CC181E;
+    --first-hover: #F95261;
+    --second: #BD0958;
+    --second-hover: #E097A7;
+    --third: #93337C;
+    --third-hover: #FF78DF;
+    --fourth: #5E4685;
+    --fourth-hover: #C293FF;
     --oxford-blue: #0b132b;
     --turquoise-blue: #6fffe9;
-    --youtube-red: #CC181E;
-    --github-blue: #0041C4;
 }
 
 html, body {
@@ -60,8 +68,6 @@ h1, h2 { font-family: 'Press Start 2P'; }
     grid-row: 2;
 }
 
-.nav-link-active { color: #0041C4; }
-
 button {
     height: 100%;
     width: 100%;
@@ -94,61 +100,3 @@ img {
 }
 
 .home-contacts { height: 65px; }
-
-#about {
-    grid-column: 1/span 1;
-    grid-row: 1/span 2;
-}
-
-#projects {
-    grid-column: 2/span 1;
-    grid-row: 1/span 1;
-}
-
-#contacts { }
-
-#hobby {
-    grid-column: 3/span 1;
-    grid-row: 2/span 2;
-}
-
-#youtube {
-    grid-column: 3/span 1;
-    grid-row: 1/span 1;
-
-    background-color: var(--youtube-red);
-}
-
-#youtube:hover { background-color: #dd222f; }
-
-#github { background-color: var(--github-blue); }
-
-#github:hover { background-color: #005ada; }
-
-@media screen and (max-width: 960px) {
-    #body { display: none; }
-
-    #about {
-        grid-column: 1/span 1;
-        grid-row: 1/span 1;
-    }
-
-    #projects {
-        grid-column: 1/span 1;
-        grid-row: 2/span 1;
-    }
-
-    #contacts { }
-
-    #hobby {
-        grid-column: 2/span 1;
-        grid-row: 2/span 1;
-    }
-
-    #youtube {
-        grid-column: 2/span 1;
-        grid-row: 1/span 1;
-    }
-
-    #github { }
-}

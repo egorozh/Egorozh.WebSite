@@ -2,7 +2,7 @@
 
 @inject NavigationManager _navigation
 
-<main>
+<main id="main">
     <div id="about">
         <AboutLink/>
     </div>
@@ -11,11 +11,9 @@
         <ProjectsLink/>
     </div>
 
-    <GridChild Row="3"
-               Column="2"
-               id="contacts">
+    <div id="contacts">
         <ContactsLink/>
-    </GridChild>
+    </div>
 
     <div id="hobby">
         <HobbyLink/>
@@ -25,15 +23,11 @@
         <YoutubeLink/>
     </div>
 
-    <GridChild Row="3"
-               Column="1"
-               id="github">
+    <div id="github">
         <GithubLink/>
-    </GridChild>
+    </div>
 
-    <GridChild Row="2"
-               Column="2"
-               id="body">
+    <div id="body">
         <Grid RowDefinitions="* auto *"
               ColumnDefinitions="* auto *">
             <GridChild Row="2"
@@ -41,5 +35,5 @@
                 @Body
             </GridChild>
         </Grid>
-    </GridChild>
+    </div>
 </main>

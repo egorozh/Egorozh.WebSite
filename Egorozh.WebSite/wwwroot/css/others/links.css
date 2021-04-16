@@ -1,0 +1,125 @@
+﻿#main {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 14px;
+}
+
+#body {
+    grid-column: 2/span 1;
+    grid-row: 2/span 1;
+}
+
+#about {
+    grid-column: 1/span 1;
+    grid-row: 1/span 2;
+}
+
+#projects {
+    grid-column: 2/span 1;
+    grid-row: 1/span 1;
+}
+
+#contacts {
+    grid-column: 2/span 1;
+    grid-row: 3/span 1;
+}
+
+#hobby {
+    grid-column: 3/span 1;
+    grid-row: 2/span 2;
+}
+
+#youtube {
+    grid-column: 3/span 1;
+    grid-row: 1/span 1;
+    background-color: var(--first);
+}
+
+#github {
+    grid-column: 1/span 1;
+    grid-row: 3/span 1;
+    background-color: var(--fourth);
+}
+
+#youtube:hover { background-color: var(--first-hover); }
+
+#github:hover { background-color: var(--fourth-hover); }
+
+#about > button {
+    background-color: var(--third);
+    color: var(--oxford-blue)
+}
+
+#about > button:hover {
+    background-color: var(--third-hover);
+    color: var(--first);
+}
+
+#projects > button {
+    background-color: var(--second);
+    color: white
+}
+
+#projects > button:hover {
+    background-color: var(--second-hover);
+    color: var(--third);
+}
+
+#contacts > button {
+    background-color: var(--third);
+    color: var(--oxford-blue)
+}
+
+#contacts > button:hover {
+    background-color: var(--third-hover);
+    color: var(--first);
+}
+
+#hobby > button {
+    background-color: var(--second);
+    color: white
+}
+
+#hobby > button:hover {
+    background-color: var(--second-hover);
+    color: var(--third);
+}
+
+
+@media screen and (max-width: 960px) {
+    #main {
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 14px;
+    }
+
+    #body { display: none; }
+
+    #about {
+        grid-column: 1/span 1;
+        grid-row: 1/span 1;
+    }
+
+    #projects {
+        grid-column: 1/span 1;
+        grid-row: 2/span 1;
+    }
+
+    #contacts { }
+
+    #hobby {
+        grid-column: 2/span 1;
+        grid-row: 2/span 1;
+    }
+
+    #youtube {
+        grid-column: 2/span 1;
+        grid-row: 1/span 1;
+    }
+
+    #github { }
+}
