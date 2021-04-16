@@ -1,7 +1,5 @@
-﻿h1,h2 {
-    text-align: center
-}
+﻿h1, h2 { text-align: center }
 
-h1 {
-    color: var(--turquoise-blue);
-}
+h1 { color: var(--turquoise-blue); }
+
+h2 { color: #a03472 }

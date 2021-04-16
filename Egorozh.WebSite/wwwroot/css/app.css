@@ -6,16 +6,16 @@
 
 :root {
     --first: #CC181E;
-    --first-hover: #F95261;
-    --second: #BD0958;
-    --second-hover: #E097A7;
+    --first-hover: #f80000;
+    --second: #f54021;
+    --second-hover: #f75e25;
     --third: #93337C;
     --third-hover: #FF78DF;
     --fourth: #5E4685;
     --fourth-hover: #C293FF;
-    --fifth: #344C75;
+    --fifth: #21f5aa;
     --sixth: #2F4858;
-    --turquoise-blue: #6fffe9;
+    --turquoise-blue: #b32821;
 }
 
 html, body {
@@ -24,7 +24,7 @@ html, body {
     font-weight: normal;
     font-style: normal;
     background-color: var(--sixth);
-    color: white
+    color: #a03472
 }
 
 h1, h2 {
