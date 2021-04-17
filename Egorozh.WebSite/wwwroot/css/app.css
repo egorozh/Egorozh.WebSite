@@ -15,7 +15,8 @@
     --fourth-hover: #C293FF;
     --fifth: #21f5aa;
     --sixth: #2F4858;
-    --turquoise-blue: #b32821;
+    --accent-body-foreground: #b32821;
+    --body-foreground: #a03472;
 }
 
 html, body {
@@ -24,13 +25,15 @@ html, body {
     font-weight: normal;
     font-style: normal;
     background-color: var(--sixth);
-    color: #a03472
+    color: var(--body-foreground)
 }
 
 h1, h2 {
     font-family: 'Press Start 2P';
     color: white;
 }
+
+#body > h1, h2 { color: var(--accent-body-foreground); }
 
 .content { padding-top: 1.1rem; }
 
@@ -132,4 +135,14 @@ img {
     from { height: 256px; }
 
     to { height: 65px; }
+}
+
+@keyframes enlarge_text {
+    from {
+        font-size: 100%;
+    }
+
+    to {
+        font-size: 150%;
+    }
 }
