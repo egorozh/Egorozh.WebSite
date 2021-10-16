@@ -1,6 +1,22 @@
 ﻿@page "/contacts"
 
-<h2>Мои контакты</h2>
+<Grid RowDefinitions="auto *">
+    <GridChild Row="1">
+        <Grid ColumnDefinitions="* auto *">
+            <GridChild Column="2">
+                <h2>Мои контакты</h2>
+            </GridChild>
+        </Grid>
+    </GridChild>
+
+    <GridChild Row="2"
+               VerticalScrollBar="ScrollBar.Auto">
+        <div style="text-align: center;">
+            Почта: zheludkov.egor@mail.ru
+        </div>
+    </GridChild>
+</Grid>
+
 
 @code {
 

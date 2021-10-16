@@ -1,4 +1,10 @@
 ﻿@page "/"
 
-<h1>Всем привет!</h1>
-<h2>Меня зовут Егор. Добро пожаловать на мой сайт</h2>
+<Grid RowDefinitions="* auto *"
+      ColumnDefinitions="* auto *">
+    <GridChild Row="2"
+               Column="2">
+        <h1>Всем привет!</h1>
+        <h2>Меня зовут Егор. Добро пожаловать на мой сайт</h2>
+    </GridChild>
+</Grid>

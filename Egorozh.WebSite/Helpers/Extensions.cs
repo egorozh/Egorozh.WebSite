@@ -1,6 +1,5 @@
-﻿namespace Egorozh.WebSite
+﻿namespace Egorozh.WebSite;
+
+public static class Extensions
 {
-    public static class Extensions
-    {
-    }
 }

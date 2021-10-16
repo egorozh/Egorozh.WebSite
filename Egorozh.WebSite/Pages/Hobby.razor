@@ -1,6 +1,27 @@
 ﻿@page "/hobby"
 
-<h2>Формула 1, баскетбол и шахматы</h2>
+<Grid RowDefinitions="auto *">
+    <GridChild Row="1">
+        <Grid ColumnDefinitions="* auto *">
+            <GridChild Column="2">
+                <h2>Формула 1, баскетбол и шахматы</h2>
+            </GridChild>
+        </Grid>
+    </GridChild>
+
+    <GridChild Row="2"
+               VerticalScrollBar="ScrollBar.Auto">
+        <div style="text-align: center;">
+            С 2014 смотрю гонки формулы-1. Так же смотрю формулу-2 последние пару сезонов. 
+        </div>
+        <div style="text-align: center;">
+            В школе играл в баскетбол и смотрел игры NBA. В последние годы слежу только за некоторыми новостями. 
+        </div>
+        <div style="text-align: center;">
+            После просмотра сериала "Ход королевы" увлекся шахматами. Смотрю разборы партий на Youtube плюс играю в них дома.
+        </div>
+    </GridChild>
+</Grid>
 
 @code {
 
