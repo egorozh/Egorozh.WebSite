@@ -6,7 +6,7 @@ using Egorozh.PersonalApp.Views;
 
 namespace Egorozh.PersonalApp;
 
-public partial class App : Application
+public class App : Application
 {
     public override void Initialize()
     {

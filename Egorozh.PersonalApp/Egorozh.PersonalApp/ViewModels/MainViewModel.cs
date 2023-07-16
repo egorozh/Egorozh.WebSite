@@ -1,6 +1,18 @@
-﻿namespace Egorozh.PersonalApp.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Egorozh.PersonalApp.ViewModels.Pages;
 
-public class MainViewModel : ViewModelBase
+namespace Egorozh.PersonalApp.ViewModels;
+
+
+public partial class MainViewModel : ViewModelBase
 {
-    public string Greeting => "Welcome to Avalonia!";
+   [ObservableProperty] private BasePageViewModel _currentPage;
+
+
+
+
+   public MainViewModel()
+   {
+      _currentPage = new MainPageViewModel();
+   }
 }

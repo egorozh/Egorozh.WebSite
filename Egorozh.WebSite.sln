@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.iOS", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.Browser", "Egorozh.PersonalApp\Egorozh.PersonalApp.Browser\Egorozh.PersonalApp.Browser.csproj", "{778FFE5F-290B-4D6F-B39D-47AD6383B50A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{DFC3ECD8-28A7-4CFD-A9B0-8D2FCE34AB57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,5 +53,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEE15AED-0069-4D5E-B167-A207C6F3CA0D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21D9C734-CFBD-41BC-AB5B-AFAA6234C504} = {DFC3ECD8-28A7-4CFD-A9B0-8D2FCE34AB57}
 	EndGlobalSection
 EndGlobal
