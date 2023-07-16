@@ -5,6 +5,11 @@
         <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <OutputType>Exe</OutputType>
+
+
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>full</TrimMode>
+        <RunAOTCompilation>true</RunAOTCompilation>
     </PropertyGroup>
 
     <ItemGroup>
