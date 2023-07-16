@@ -3,6 +3,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
         <WasmMainJSPath>AppBundle\main.js</WasmMainJSPath>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
