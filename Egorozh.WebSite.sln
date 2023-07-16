@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Egorozh.WebSite", "Egorozh.WebSite\Egorozh.WebSite.csproj", "{21D9C734-CFBD-41BC-AB5B-AFAA6234C504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp", "Egorozh.PersonalApp\Egorozh.PersonalApp\Egorozh.PersonalApp.csproj", "{33FC1EB6-2A33-4BC1-AF63-FD9C1CDD80D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.Android", "Egorozh.PersonalApp\Egorozh.PersonalApp.Android\Egorozh.PersonalApp.Android.csproj", "{AEA45DE6-2B46-4C4B-941B-67224E50BF70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.Desktop", "Egorozh.PersonalApp\Egorozh.PersonalApp.Desktop\Egorozh.PersonalApp.Desktop.csproj", "{B0084703-772A-4683-9A3C-6338C0B72BA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.iOS", "Egorozh.PersonalApp\Egorozh.PersonalApp.iOS\Egorozh.PersonalApp.iOS.csproj", "{32D60807-2B1D-4D42-B644-2B7C41B44C15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Egorozh.PersonalApp.Browser", "Egorozh.PersonalApp\Egorozh.PersonalApp.Browser\Egorozh.PersonalApp.Browser.csproj", "{778FFE5F-290B-4D6F-B39D-47AD6383B50A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{21D9C734-CFBD-41BC-AB5B-AFAA6234C504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D9C734-CFBD-41BC-AB5B-AFAA6234C504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D9C734-CFBD-41BC-AB5B-AFAA6234C504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FC1EB6-2A33-4BC1-AF63-FD9C1CDD80D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FC1EB6-2A33-4BC1-AF63-FD9C1CDD80D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FC1EB6-2A33-4BC1-AF63-FD9C1CDD80D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FC1EB6-2A33-4BC1-AF63-FD9C1CDD80D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA45DE6-2B46-4C4B-941B-67224E50BF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA45DE6-2B46-4C4B-941B-67224E50BF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA45DE6-2B46-4C4B-941B-67224E50BF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA45DE6-2B46-4C4B-941B-67224E50BF70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0084703-772A-4683-9A3C-6338C0B72BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0084703-772A-4683-9A3C-6338C0B72BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0084703-772A-4683-9A3C-6338C0B72BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0084703-772A-4683-9A3C-6338C0B72BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D60807-2B1D-4D42-B644-2B7C41B44C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D60807-2B1D-4D42-B644-2B7C41B44C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D60807-2B1D-4D42-B644-2B7C41B44C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D60807-2B1D-4D42-B644-2B7C41B44C15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{778FFE5F-290B-4D6F-B39D-47AD6383B50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{778FFE5F-290B-4D6F-B39D-47AD6383B50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{778FFE5F-290B-4D6F-B39D-47AD6383B50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{778FFE5F-290B-4D6F-B39D-47AD6383B50A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
