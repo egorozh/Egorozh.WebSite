@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Egorozh.PersonalApp.ViewModels"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:models="clr-namespace:Egorozh.PersonalApp.Models"
+             xmlns:views="clr-namespace:Egorozh.PersonalApp.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Egorozh.PersonalApp.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -15,76 +17,221 @@
     </Design.DataContext>
 
     <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
         <Style Selector="Button">
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="VerticalContentAlignment" Value="Stretch" />
             <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Margin" Value="2" />
         </Style>
 
         <Style Selector="Button.square">
-            <Setter Property="Width" Value="200" />
+            <Setter Property="(Interaction.Behaviors)">
+                <BehaviorCollectionTemplate>
+                    <BehaviorCollection>
+                        <AdaptiveBehavior SourceControl="{Binding $parent[TopLevel]}">
+                            <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="small" />
+                            <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="medium" />
+                            <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="wide" />
+                        </AdaptiveBehavior>
+                    </BehaviorCollection>
+                </BehaviorCollectionTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.small">
+           
+        </Style>
+        <Style Selector="Button.medium">
+           
+        </Style>
+        <Style Selector="Button.wide">
+            <Setter Property="Width" Value="300" />
             <Setter Property="Height" Value="{Binding $self.Bounds.Width}" />
         </Style>
+
+        <!-- #region Grid Style -->
+
+        <Style Selector="Grid">
+            <Setter Property="(Interaction.Behaviors)">
+                <BehaviorCollectionTemplate>
+                    <BehaviorCollection>
+                        <AdaptiveBehavior SourceControl="{Binding $parent[TopLevel]}">
+                            <AdaptiveClassSetter MinWidth="0" MaxWidth="900" ClassName="normal" />
+                            <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="wide" />
+                        </AdaptiveBehavior>
+                    </BehaviorCollection>
+                </BehaviorCollectionTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="Grid.normal">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="Grid.wide">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+
+        <!-- #endregion -->
+
+        <!-- #region ContentControl Style -->
+
+        <Style Selector="ContentControl">
+            <Setter Property="(Interaction.Behaviors)">
+                <BehaviorCollectionTemplate>
+                    <BehaviorCollection>
+                        <AdaptiveBehavior SourceControl="{Binding $parent[TopLevel]}">
+                            <AdaptiveClassSetter MinWidth="0" MaxWidth="900" ClassName="normal" />
+                            <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="wide" />
+                        </AdaptiveBehavior>
+                    </BehaviorCollection>
+                </BehaviorCollectionTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="ContentControl.normal">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="ContentControl.wide">
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Grid.Column" Value="1" />
+        </Style>
+
+        <!-- #endregion -->
+
+
+        <!-- #region UniformGrid Style -->
+
+        <Style Selector="UniformGrid">
+            <Setter Property="(Interaction.Behaviors)">
+                <BehaviorCollectionTemplate>
+                    <BehaviorCollection>
+                        <AdaptiveBehavior SourceControl="{Binding $parent[TopLevel]}">
+                            <AdaptiveClassSetter MinWidth="0" MaxWidth="500" ClassName="small" />
+                            <AdaptiveClassSetter MinWidth="500" MaxWidth="900" ClassName="medium" />
+                            <AdaptiveClassSetter MinWidth="900" MaxWidth="Infinity" ClassName="wide" />
+                        </AdaptiveBehavior>
+                    </BehaviorCollection>
+                </BehaviorCollectionTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="UniformGrid.small">
+            <Setter Property="Columns" Value="2" />
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="UniformGrid.medium">
+            <Setter Property="Columns" Value="3" />
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="UniformGrid.wide">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <!-- #endregion -->
+
     </UserControl.Styles>
 
+    <Panel>
+        
+        <Grid RowDefinitions="Auto * Auto"
+              ColumnDefinitions="Auto * Auto">
 
-    <Grid RowDefinitions="Auto * Auto"
-          ColumnDefinitions="Auto * Auto">
+            <Button Grid.RowSpan="2"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[0])}">
+                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[0]).Title, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Button>
 
-        <Button Grid.Column="0"
-                Grid.Row="0"
-                Grid.RowSpan="2">
-            <TextBlock Text="Обо мне"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" />
-        </Button>
+            <Button Grid.Column="1"
+                    Grid.Row="0"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[1])}">
+                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[1]).Title, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Button>
 
-        <Button Grid.Column="1"
-                Grid.Row="0">
-            <TextBlock Text="Мои проекты"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" />
-        </Button>
+            <Button Grid.Column="1"
+                    Grid.Row="2"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[2])}">
+                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[2]).Title, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Button>
 
-        <Button Grid.Column="1"
-                Grid.Row="2">
-            <TextBlock Text="Контакты"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" />
-        </Button>
+            <Button Grid.Column="2"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[3])}">
+                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[3]).Title, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+            </Button>
 
-        <Button Grid.Column="2"
-                Grid.Row="1"
-                Grid.RowSpan="2">
-            <TextBlock Text="Хобби"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center" />
-        </Button>
+            <Button Grid.Column="2"
+                    Grid.Row="0"
+                    Classes="square"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationIconItem)NavigationItems[4])}">
+                <Viewbox>
+                    <avalonia:MaterialIcon Kind="Youtube" />
+                </Viewbox>
+            </Button>
 
-        <Button Grid.Column="2"
-                Grid.Row="0"
-                Classes="square"
-                Command="{Binding OpenYoutubeChannelCommand}">
-            <Viewbox>
-                <avalonia:MaterialIcon Kind="Youtube" />
-            </Viewbox>
-        </Button>
+            <Button Grid.Column="0"
+                    Grid.Row="2"
+                    Classes="square"
+                    Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                    CommandParameter="{Binding ((models:MainPageNavigationIconItem)NavigationItems[5])}">
+                <Viewbox>
+                    <avalonia:MaterialIcon Kind="Github" />
+                </Viewbox>
+            </Button>
 
-        <Button Grid.Column="0"
-                Grid.Row="2"
-                Classes="square"
-                Command="{Binding OpenGithubProfileCommand}">
-            <Viewbox>
-                <avalonia:MaterialIcon Kind="Github" />
-            </Viewbox>
-        </Button>
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Content="{Binding CurrentPage}" />
 
-        <ContentControl Grid.Row="1"
-                        Grid.Column="1"
-                        Content="{Binding CurrentPage}" />
-
-    </Grid>
-
+        </Grid>
+    
+        <ItemsControl ItemsSource="{Binding NavigationItems}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="{x:Type models:MainPageNavigationItem}">
+                    <Button Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                            CommandParameter="{Binding .}">
+                        <TextBlock Text="{Binding Title, Mode=OneWay}"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" />
+                    </Button>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type models:MainPageNavigationIconItem}">
+                    <Button Classes="square"
+                            Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                            CommandParameter="{Binding .}">
+                        <Viewbox>
+                            <avalonia:MaterialIcon Kind="{Binding Icon}" />
+                        </Viewbox>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+    </Panel>
+    
 </UserControl>

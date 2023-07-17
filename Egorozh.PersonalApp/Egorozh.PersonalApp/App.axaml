@@ -11,7 +11,7 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
         <avalonia:MaterialIconStyles />
     </Application.Styles>
 </Application>

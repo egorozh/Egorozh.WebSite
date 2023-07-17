@@ -19,7 +19,27 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.0.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
         <PackageReference Include="Material.Icons.Avalonia" Version="2.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Pages\AboutPageView.axaml.cs">
+        <DependentUpon>AboutPageView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\ContactsPageView.axaml.cs">
+        <DependentUpon>ContactsPageView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\MyProjectsPageView.axaml.cs">
+        <DependentUpon>MyProjectsPageView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Pages\HobbyPageView.axaml.cs">
+        <DependentUpon>HobbyPageView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>
