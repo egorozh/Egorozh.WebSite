@@ -11,7 +11,11 @@
     </Application.DataTemplates>
 
     <Application.Styles>
-        <FluentTheme/>
+        <FluentTheme>
+            <FluentTheme.Palettes>
+                <ColorPaletteResources x:Key="Dark" Accent="DarkMagenta" RegionColor="Black" ErrorText="Yellow" />
+            </FluentTheme.Palettes>
+        </FluentTheme>
         <avalonia:MaterialIconStyles />
     </Application.Styles>
 </Application>

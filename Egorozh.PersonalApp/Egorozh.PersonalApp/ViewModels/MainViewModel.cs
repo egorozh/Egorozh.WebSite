@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Egorozh.PersonalApp.Models;
@@ -17,29 +18,35 @@ public partial class MainViewModel : ViewModelBase
    private const string DefaultContactsTitle = "Контакты";
    private const string DefaultHobbyTitle = "Хобби";
    
-   private const string DefaultMainTitle = "На главную";
    
    private readonly IOpenLinksService _openLinksService;
    
-   [ObservableProperty] private BasePageViewModel _currentPage;
+   [ObservableProperty] private BasePageViewModel? _currentPage;
    
    [ObservableProperty] private ObservableCollection<BaseMainPageNavigationItem> _navigationItems;
+   
+   [ObservableProperty] private bool _isMainPage;
    
    
    public MainViewModel(IOpenLinksService openLinksService)
    {
       _openLinksService = openLinksService;
-      _currentPage = new MainPageViewModel();
-
+      
+      const string youtubeChannelUrl = "https://www.youtube.com/channel/UCWCJJPy6o9E6ZoWTnF6JKsQ";
+      const string githubUrl = "https://github.com/egorozh";
+      
       _navigationItems = new ObservableCollection<BaseMainPageNavigationItem>(new BaseMainPageNavigationItem[]
       {
          new MainPageNavigationItem(DefaultAboutTitle),
          new MainPageNavigationItem(DefaultMyProjectsTitle),
          new MainPageNavigationItem(DefaultContactsTitle),
          new MainPageNavigationItem(DefaultHobbyTitle),
-         new MainPageNavigationIconItem(MaterialIconKind.Youtube),
-         new MainPageNavigationIconItem(MaterialIconKind.Github)
+         new MainPageNavigationIconItem(MaterialIconKind.Youtube, youtubeChannelUrl),
+         new MainPageNavigationIconItem(MaterialIconKind.Github, githubUrl)
       });
+
+      _isMainPage = true;
+      _currentPage = new MainPageViewModel();
    }
    
 
@@ -54,38 +61,62 @@ public partial class MainViewModel : ViewModelBase
       
       if (navigationItem is MainPageNavigationIconItem iconItem)
       {
-         if (iconItem.Icon == MaterialIconKind.Youtube)
-         {
-            const string youtubeChannelUrl = "https://www.youtube.com/channel/UCWCJJPy6o9E6ZoWTnF6JKsQ";
-            
-            _openLinksService.Open(youtubeChannelUrl);
-            
-            return;
-         }
-
-         if (iconItem.Icon == MaterialIconKind.Github)
-         {
-            const string githubUrl = "https://github.com/egorozh";
-            
-            _openLinksService.Open(githubUrl);
-         }
+         _openLinksService.Open(iconItem.LinkUrl);
       }
    }
 
 
    private void NavigateToPage(MainPageNavigationItem pageItem)
    {
+      ResetNavigationItems();
+      
       BasePageViewModel pageVm = pageItem.Title switch
       {
-         DefaultAboutTitle => new AboutPageViewModel(),
+         DefaultAboutTitle      => new AboutPageViewModel(),
          DefaultMyProjectsTitle => new MyProjectsPageViewModel(),
-         DefaultContactsTitle => new ContactsPageViewModel(),
-         DefaultHobbyTitle => new HobbyPageViewModel(),
+         DefaultContactsTitle   => new ContactsPageViewModel(),
+         DefaultHobbyTitle      => new HobbyPageViewModel(),
          
          _ => new MainPageViewModel()
       };
 
-
+      pageItem.ToSmall();
+      
       CurrentPage = pageVm;
+   }
+
+
+   partial void OnCurrentPageChanging(BasePageViewModel? value)
+   {
+      BasePageViewModel? oldPage = CurrentPage;
+
+      if (oldPage is not null)
+      {
+         oldPage.Closed -= OldPageOnClosed;
+      }
+
+      if (value != null)
+      {
+         value.Closed += OldPageOnClosed;
+      }
+   }
+
+   
+   private void OldPageOnClosed(object? sender, EventArgs e)
+   {
+      CurrentPage = new MainPageViewModel();
+      IsMainPage = true;
+
+      ResetNavigationItems();
+   }
+
+
+   private void ResetNavigationItems()
+   {
+      foreach (var navigationItem in NavigationItems)
+      {
+         if (navigationItem is MainPageNavigationItem mainPageNavigationItem)
+            mainPageNavigationItem.ToNormal();
+      }
    }
 }
