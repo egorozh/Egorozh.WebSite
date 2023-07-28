@@ -13,6 +13,9 @@ public partial class MainPageNavigationItem : BaseMainPageNavigationItem
     
     [ObservableProperty] private string _title;
     
+    
+    public bool IsHome { get; set; }
+    
 
     public MainPageNavigationItem(string title)
     {
@@ -21,14 +24,16 @@ public partial class MainPageNavigationItem : BaseMainPageNavigationItem
     }
 
     
-    public void ToSmall()
+    public void ToHome()
     {
         Title = DefaultMainTitle;
+        IsHome = true;
     }
-    
-    
+
+
     public void ToNormal()
     {
         Title = _initTitle;
+        IsHome = false;
     }
 }

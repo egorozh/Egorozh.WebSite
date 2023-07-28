@@ -6,6 +6,7 @@
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:models="clr-namespace:Egorozh.PersonalApp.Models"
              xmlns:views="clr-namespace:Egorozh.PersonalApp.Views"
+             xmlns:valueConverters="clr-namespace:Egorozh.PersonalApp.ValueConverters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Egorozh.PersonalApp.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -15,6 +16,9 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel />
     </Design.DataContext>
+    <UserControl.Resources>
+        <x:Double x:Key="MinSquareButtonWidth">80</x:Double>
+    </UserControl.Resources>
 
     <UserControl.Styles>
         <Style Selector="TextBlock">
@@ -30,6 +34,25 @@
             <Setter Property="Margin" Value="2" />
         </Style>
 
+        <Style Selector="TextBlock.vertical">
+            <Setter Property="RenderTransform"
+                    Value="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).IsMainPage,
+                    Converter={valueConverters:BoolToRotateTransformConverter},
+                    FallbackValue=rotate(0)}" />
+        </Style>
+        
+        <Style Selector="Button.vertical">
+            <Setter Property="Width"
+                    Value="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).IsMainPage,
+                    Converter={valueConverters:BoolToWidthConverter}, ConverterParameter={StaticResource MinSquareButtonWidth}, 
+                    FallbackValue=300}" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.4" />
+                </Transitions>
+            </Setter>
+        </Style>
+
         <Style Selector="Button.square">
             <Setter Property="(Interaction.Behaviors)">
                 <BehaviorCollectionTemplate>
@@ -42,16 +65,26 @@
                     </BehaviorCollection>
                 </BehaviorCollectionTemplate>
             </Setter>
+
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Width" Duration="0:0:0.4" />
+                </Transitions>
+            </Setter>
         </Style>
 
         <Style Selector="Button.small">
-           
+
         </Style>
         <Style Selector="Button.medium">
-           
+
         </Style>
         <Style Selector="Button.wide">
-            <Setter Property="Width" Value="300" />
+            <Setter Property="Width"
+                    Value="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).IsMainPage,
+                    Converter={valueConverters:BoolToWidthConverter}, ConverterParameter={StaticResource MinSquareButtonWidth}, 
+                    FallbackValue=300}" />
+
             <Setter Property="Height" Value="{Binding $self.Bounds.Width}" />
         </Style>
 
@@ -69,7 +102,7 @@
                 </BehaviorCollectionTemplate>
             </Setter>
         </Style>
-        
+
         <Style Selector="Grid.normal">
             <Setter Property="IsVisible" Value="False" />
         </Style>
@@ -140,14 +173,16 @@
     </UserControl.Styles>
 
     <Panel>
-        
+
         <Grid RowDefinitions="Auto * Auto"
               ColumnDefinitions="Auto * Auto">
 
-            <Button Grid.RowSpan="2"
+            <Button Classes="vertical"
+                    Grid.RowSpan="2"
                     Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
                     CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[0])}">
-                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[0]).Title, Mode=OneWay}"
+                <TextBlock Classes="vertical"
+                           Text="{Binding ((models:MainPageNavigationItem)NavigationItems[0]).Title, Mode=OneWay}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
             </Button>
@@ -173,9 +208,11 @@
             <Button Grid.Column="2"
                     Grid.Row="1"
                     Grid.RowSpan="2"
+                    Classes="vertical"
                     Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
                     CommandParameter="{Binding ((models:MainPageNavigationItem)NavigationItems[3])}">
-                <TextBlock Text="{Binding ((models:MainPageNavigationItem)NavigationItems[3]).Title, Mode=OneWay}"
+                <TextBlock Classes="vertical"
+                           Text="{Binding ((models:MainPageNavigationItem)NavigationItems[3]).Title, Mode=OneWay}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
             </Button>
@@ -205,17 +242,18 @@
                             Content="{Binding CurrentPage}" />
 
         </Grid>
-    
+
         <ItemsControl ItemsSource="{Binding NavigationItems}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid/>
+                    <UniformGrid />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.DataTemplates>
                 <DataTemplate DataType="{x:Type models:MainPageNavigationItem}">
-                    <Button Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
-                            CommandParameter="{Binding .}">
+                    <Button
+                        Command="{Binding $parent[views:MainView].((vm:MainViewModel)DataContext).NavigateToPageCommand, FallbackValue={x:Null}}"
+                        CommandParameter="{Binding .}">
                         <TextBlock Text="{Binding Title, Mode=OneWay}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
@@ -233,5 +271,5 @@
             </ItemsControl.DataTemplates>
         </ItemsControl>
     </Panel>
-    
+
 </UserControl>

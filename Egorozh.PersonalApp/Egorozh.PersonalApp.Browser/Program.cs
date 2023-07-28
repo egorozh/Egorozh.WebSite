@@ -1,11 +1,8 @@
 ﻿using System.Runtime.Versioning;
 using System.Threading.Tasks;
-using Autofac;
 using Avalonia;
 using Avalonia.Browser;
 using Avalonia.ReactiveUI;
-using Egorozh.PersonalApp.Browser.Services;
-using Egorozh.PersonalApp.Services;
 
 [assembly: SupportedOSPlatform("browser")]
 
@@ -26,15 +23,9 @@ internal class Program
     {
         var app = new App
         {
-            RegisterServicesAction = RegisterServices
+            ServiceProvider = new MyServiceProvider()
         };
 
         return app;
-    }
-
-
-    private static void RegisterServices(ContainerBuilder builder)
-    {
-        builder.RegisterType<BrowserOpenLinksService>().As<IOpenLinksService>().SingleInstance();
     }
 }

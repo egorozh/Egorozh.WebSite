@@ -25,7 +25,10 @@ public partial class MainViewModel : ViewModelBase
    
    [ObservableProperty] private ObservableCollection<BaseMainPageNavigationItem> _navigationItems;
    
-   [ObservableProperty] private bool _isMainPage;
+   [ObservableProperty] [NotifyPropertyChangedFor(nameof(IsNewProp))] private bool _isMainPage;
+
+
+   public bool IsNewProp => !IsMainPage;
    
    
    public MainViewModel(IOpenLinksService openLinksService)
@@ -68,6 +71,12 @@ public partial class MainViewModel : ViewModelBase
 
    private void NavigateToPage(MainPageNavigationItem pageItem)
    {
+      if (pageItem.IsHome)
+      {
+         NavigateToMainPage();
+         return;
+      }
+      
       ResetNavigationItems();
       
       BasePageViewModel pageVm = pageItem.Title switch
@@ -80,11 +89,13 @@ public partial class MainViewModel : ViewModelBase
          _ => new MainPageViewModel()
       };
 
-      pageItem.ToSmall();
+      IsMainPage = false;
+      
+      pageItem.ToHome();
       
       CurrentPage = pageVm;
    }
-
+   
 
    partial void OnCurrentPageChanging(BasePageViewModel? value)
    {
@@ -102,15 +113,18 @@ public partial class MainViewModel : ViewModelBase
    }
 
    
-   private void OldPageOnClosed(object? sender, EventArgs e)
+   private void OldPageOnClosed(object? sender, EventArgs e) => NavigateToMainPage();
+
+
+   private void NavigateToMainPage()
    {
       CurrentPage = new MainPageViewModel();
       IsMainPage = true;
 
       ResetNavigationItems();
    }
-
-
+   
+   
    private void ResetNavigationItems()
    {
       foreach (var navigationItem in NavigationItems)

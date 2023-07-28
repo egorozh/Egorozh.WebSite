@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia.Browser" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Jab" Version="0.8.6" />
     </ItemGroup>
 
     <ItemGroup>

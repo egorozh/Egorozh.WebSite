@@ -9,6 +9,6 @@ public class BoolToWidthConverter : BaseValueConverterWithParameter<bool, double
 {
     protected override double ConvertImpl(bool value, Type targetType, double parameter, CultureInfo culture)
     {
-        throw new NotImplementedException();
+        return value ? 300 : parameter;
     }
 }

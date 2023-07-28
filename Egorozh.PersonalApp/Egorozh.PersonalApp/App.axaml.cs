@@ -1,12 +1,12 @@
-using System;
-using Autofac;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Egorozh.PersonalApp.ViewModels;
+using Egorozh.PersonalApp.IoC;
 using Egorozh.PersonalApp.Views;
 
+
 namespace Egorozh.PersonalApp;
+
 
 public class App : Application
 {
@@ -17,26 +17,18 @@ public class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var builder = new IoC.IoC().InitBuilder();
-
-        builder.RegisterType<MainViewModel>().AsSelf().SingleInstance();
-        
-        RegisterServicesAction?.Invoke(builder);
-        
-        var container = builder.Build();
-        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = container.Resolve<MainViewModel>()
+                DataContext = ServiceProvider.GetRootModel()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
             singleViewPlatform.MainView = new MainView
             {
-                DataContext = container.Resolve<MainViewModel>()
+                DataContext = ServiceProvider.GetRootModel()
             };
         }
 
@@ -44,5 +36,5 @@ public class App : Application
     }
 
     
-    public Action<ContainerBuilder> RegisterServicesAction { get; set; }
+    public IMainViewModelResolver ServiceProvider { get; set; }
 }

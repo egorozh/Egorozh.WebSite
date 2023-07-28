@@ -1,9 +1,6 @@
 ﻿using System;
-using Autofac;
 using Avalonia;
 using Avalonia.ReactiveUI;
-using Egorozh.PersonalApp.Desktop.Services;
-using Egorozh.PersonalApp.Services;
 
 namespace Egorozh.PersonalApp.Desktop;
 
@@ -31,15 +28,9 @@ class Program
     {
         var app = new App
         {
-            RegisterServicesAction = RegisterServices
+            ServiceProvider = new MyServiceProvider()
         };
 
         return app;
-    }
-
-
-    private static void RegisterServices(ContainerBuilder builder)
-    {
-        builder.RegisterType<DesktopOpenLinksService>().As<IOpenLinksService>().SingleInstance();
     }
 }
