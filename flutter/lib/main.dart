@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 
-import 'features/home/presentation/pages/home_screen.dart';
+import 'core/core.dart';
+import 'features/features.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const EgorozhApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class EgorozhApp extends StatelessWidget {
+  const EgorozhApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          brightness: Brightness.dark,
-          seedColor: Colors.tealAccent,
-        ),
-        useMaterial3: true,
-      ),
+      title: 'Желудков Егор',
+      theme: darkTheme,
       home: const HomeScreen(),
     );
   }
