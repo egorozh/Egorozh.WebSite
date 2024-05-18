@@ -28,7 +28,7 @@ class BaseTileButton extends StatelessWidget {
             ScreenType.handset => 12,
             ScreenType.watch => 8,
           }),
-          child: Center(child: child),
+          child: child,
         ),
       ),
     );

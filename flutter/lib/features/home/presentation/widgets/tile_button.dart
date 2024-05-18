@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/core.dart';
 import 'widgets.dart';
@@ -22,27 +23,25 @@ class TileTextButton extends StatelessWidget {
       ScreenType.watch => textTheme.titleSmall,
     };
 
-    return BaseTileButton(child: Text(text, textAlign: TextAlign.center, style: style));
+    return BaseTileButton(child: Center(child: Text(text, textAlign: TextAlign.center, style: style)));
   }
 }
 
 class TileIconButton extends StatelessWidget {
   const TileIconButton({
     super.key,
-    required this.icon,
+    required this.assetName,
   });
 
-  final IconData icon;
+  final String assetName;
 
   @override
   Widget build(BuildContext context) {
-    final double iconSize = switch (AdaptiveHelper.getScreenType(context)) {
-      ScreenType.desktop => 48,
-      ScreenType.tablet => 80,
-      ScreenType.handset => 48,
-      ScreenType.watch => 24,
-    };
-
-    return BaseTileButton(child: Icon(icon, size: iconSize));
+    return BaseTileButton(
+      child: SvgPicture.asset(
+        assetName,
+        colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurface, BlendMode.srcIn),
+      ),
+    );
   }
 }
