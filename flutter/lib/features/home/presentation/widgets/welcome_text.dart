@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,8 +30,8 @@ class WelcomeText extends StatelessWidget {
           textAlign: TextAlign.center,
           TextSpan(
             children: [
-              TextSpan(text: "Всем привет!\r\nМеня зовут ", style: style),
-              TextSpan(text: " Егор!", style: primaryStyle),
+              TextSpan(text: context.appTexts.welcome_text1, style: style),
+              TextSpan(text: context.appTexts.welcome_text2, style: primaryStyle),
             ],
           ),
         ),
@@ -39,16 +40,10 @@ class WelcomeText extends StatelessWidget {
           textAlign: TextAlign.start,
           TextSpan(
             children: [
-              TextSpan(
-                  text:
-                      "\t\tЯ являюсь разработчиком мобильных и десктопных приложений. Мой карьерный путь начался с 2018 года. Начинал с разработки векторного редактора на",
-                  style: style),
-              TextSpan(text: " WPF", style: primaryStyle),
-              TextSpan(
-                  text:
-                      ", предназначенного для моделирования систем безопасности.\n\n\t\tЗатем разрабатывал крупное мобильное приложение на",
-                  style: style),
-              TextSpan(text: " Xamarin Native", style: primaryStyle),
+              TextSpan(text: context.appTexts.welcome_text_next_1, style: style),
+              TextSpan(text: context.appTexts.welcome_text_next_2, style: primaryStyle),
+              TextSpan(text: context.appTexts.welcome_text_next_3, style: style),
+              TextSpan(text: context.appTexts.welcome_text_next_4, style: primaryStyle),
               TextSpan(text: ". C конца 2023 года переключился на разработку мобильного приложения на", style: style),
               TextSpan(text: " Flutter", style: primaryStyle),
               TextSpan(text: ", на котором и сделан данный сайт-визитка", style: style),
