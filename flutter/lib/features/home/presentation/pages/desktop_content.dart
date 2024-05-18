@@ -26,9 +26,9 @@ class DesktopContent extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.all(80),
             child: Center(child: WelcomeText()),
           ),
         ),

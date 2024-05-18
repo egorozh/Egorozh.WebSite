@@ -47,9 +47,9 @@ class _WatchContent extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.all(12),
             child: Center(child: WelcomeText()),
           ),
         ),
@@ -81,9 +81,9 @@ class _MobileContent extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.all(24),
             child: Center(child: WelcomeText()),
           ),
         ),
@@ -115,9 +115,9 @@ class _MiddleContent extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        const SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.all(48),
             child: Center(child: WelcomeText()),
           ),
         ),
