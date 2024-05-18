@@ -1,3 +1,5 @@
+import 'dart:js' as js;
+
 import 'package:flutter/material.dart';
 
 import '../../../../../gen/assets.gen.dart';
@@ -8,6 +10,11 @@ class GithubTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TileIconButton(assetName: Assets.icons.github);
+    return TileIconButton(
+      assetName: Assets.icons.github,
+      onTap: () {
+        js.context.callMethod('open', ['https://github.com/egorozh']);
+      },
+    );
   }
 }

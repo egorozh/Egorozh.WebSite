@@ -7,16 +7,18 @@ class BaseTileButton extends StatelessWidget {
     super.key,
     required this.child,
     this.device = ScreenType.handset,
+    required this.onTap,
   });
 
   final ScreenType device;
   final Widget child;
+  final GestureTapCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,

@@ -23,7 +23,12 @@ class TileTextButton extends StatelessWidget {
       ScreenType.watch => textTheme.titleSmall,
     };
 
-    return BaseTileButton(child: Center(child: Text(text, textAlign: TextAlign.center, style: style)));
+    return BaseTileButton(
+      onTap: () {},
+      child: Center(
+        child: Text(text, textAlign: TextAlign.center, style: style),
+      ),
+    );
   }
 }
 
@@ -31,13 +36,16 @@ class TileIconButton extends StatelessWidget {
   const TileIconButton({
     super.key,
     required this.assetName,
+    required this.onTap,
   });
 
   final String assetName;
+  final GestureTapCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return BaseTileButton(
+      onTap: onTap,
       child: SvgPicture.asset(
         assetName,
         colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurface, BlendMode.srcIn),
