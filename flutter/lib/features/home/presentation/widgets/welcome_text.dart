@@ -27,27 +27,20 @@ class WelcomeText extends StatelessWidget {
     return Column(
       children: [
         Text.rich(
-          textAlign: TextAlign.center,
+          textAlign: TextAlign.justify,
           TextSpan(
             children: [
               TextSpan(text: context.appTexts.welcome_text1, style: style),
               TextSpan(text: context.appTexts.welcome_text2, style: primaryStyle),
-            ],
-          ),
-        ),
-        const SizedBox(height: 24),
-        Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
+              TextSpan(text: "\n\n", style: style),
               TextSpan(text: context.appTexts.welcome_text_next_1, style: style),
               TextSpan(text: context.appTexts.welcome_text_next_2, style: primaryStyle),
               TextSpan(text: context.appTexts.welcome_text_next_3, style: style),
               TextSpan(text: context.appTexts.welcome_text_next_4, style: primaryStyle),
-              TextSpan(text: ". C конца 2023 года переключился на разработку мобильного приложения на", style: style),
-              TextSpan(text: " Flutter", style: primaryStyle),
-              TextSpan(text: ", на котором и сделан данный сайт-визитка", style: style),
-              TextSpan(text: "))", style: primaryStyle),
+              TextSpan(text: context.appTexts.welcome_text_next_5, style: style),
+              TextSpan(text: context.appTexts.welcome_text_next_6, style: primaryStyle),
+              TextSpan(text: context.appTexts.welcome_text_next_7, style: style),
+              TextSpan(text: context.appTexts.welcome_text_next_8, style: primaryStyle),
             ],
           ),
         ),

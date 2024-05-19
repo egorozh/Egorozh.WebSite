@@ -31,6 +31,12 @@ class _WatchContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(12),
+            child: Center(child: WelcomeText()),
+          ),
+        ),
         SliverPadding(
           padding: const EdgeInsets.all(24),
           sliver: SliverGrid.count(
@@ -45,12 +51,6 @@ class _WatchContent extends StatelessWidget {
               TileTextButton(text: "Контакты"),
               GithubTile(),
             ],
-          ),
-        ),
-        const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.all(12),
-            child: Center(child: WelcomeText()),
           ),
         ),
       ],
@@ -65,6 +65,12 @@ class _MobileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Center(child: WelcomeText()),
+          ),
+        ),
         SliverPadding(
           padding: const EdgeInsets.all(24),
           sliver: SliverGrid.count(
@@ -81,12 +87,6 @@ class _MobileContent extends StatelessWidget {
             ],
           ),
         ),
-        const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.all(24),
-            child: Center(child: WelcomeText()),
-          ),
-        ),
       ],
     );
   }
@@ -99,6 +99,12 @@ class _MiddleContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.all(48),
+            child: Center(child: WelcomeText()),
+          ),
+        ),
         SliverPadding(
           padding: const EdgeInsets.all(24),
           sliver: SliverGrid.count(
@@ -113,12 +119,6 @@ class _MiddleContent extends StatelessWidget {
               TileTextButton(text: "Контакты"),
               GithubTile(),
             ],
-          ),
-        ),
-        const SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.all(48),
-            child: Center(child: WelcomeText()),
           ),
         ),
       ],
