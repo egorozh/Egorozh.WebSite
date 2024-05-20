@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/core.dart';
-import 'features/features.dart';
+import 'features/router/router.dart';
 
 void main() {
   runApp(const EgorozhApp());
@@ -12,10 +12,9 @@ void main() {
 class EgorozhApp extends StatelessWidget {
   const EgorozhApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -26,9 +25,9 @@ class EgorozhApp extends StatelessWidget {
         //Locale('en'),
         Locale('ru'),
       ],
-      title: 'Желудков Егор',
+      title: "Желудков Егор",
       theme: darkTheme,
-      home: const HomeScreen(),
+      routerConfig: router,
     );
   }
 }

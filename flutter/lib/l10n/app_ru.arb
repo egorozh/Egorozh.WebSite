@@ -1,4 +1,11 @@
 {
+  "title": "Желудков Егор",
+  "about": "Обо мне",
+  "projects": "Мои проекты",
+  "blog": "Блог",
+  "contacts": "Контакты",
+  "youtube": "youtube",
+  "github": "github",
   "@_WELCOME_TEXT": "",
   "welcome_text1": "    Всем привет! Меня зовут ",
   "welcome_text2": " Егор!",

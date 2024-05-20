@@ -1,9 +1,11 @@
-import 'dart:js' as js;
-
+import 'package:egorozh_cv/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/core.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../router/router.dart';
 import '../widgets/widgets.dart';
 
 class DesktopContent extends StatelessWidget {
@@ -18,12 +20,12 @@ class DesktopContent extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             child: Row(
               children: [
-                TextButton(child: const Text("Обо мне"), onPressed: () {}),
-                TextButton(child: const Text("Мои проекты"), onPressed: () {}),
-                TextButton(child: const Text("Блог"), onPressed: () {}),
-                TextButton(child: const Text("Контакты"), onPressed: () {}),
+                TextButton(child: Text(context.appTexts.about), onPressed: () {}),
+                TextButton(child: Text(context.appTexts.projects), onPressed: () {}),
+                TextButton(child: Text(context.appTexts.blog), onPressed: () {}),
+                TextButton(child: Text(context.appTexts.contacts), onPressed: () => context.go(contactsRoute)),
                 TextButton.icon(
-                  label: const Text("youtube"),
+                  label: Text(context.appTexts.youtube),
                   icon: SvgPicture.asset(
                     Assets.icons.youtube,
                     colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
@@ -31,11 +33,11 @@ class DesktopContent extends StatelessWidget {
                     height: 24,
                   ),
                   onPressed: () {
-                    js.context.callMethod('open', ['https://www.youtube.com/c/EgorozhCoding']);
+                    UrlHelper.open(myYoutubeChannelUrl);
                   },
                 ),
                 TextButton.icon(
-                  label: const Text("github"),
+                  label: Text(context.appTexts.github),
                   icon: SvgPicture.asset(
                     Assets.icons.github,
                     colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
@@ -43,7 +45,7 @@ class DesktopContent extends StatelessWidget {
                     height: 24,
                   ),
                   onPressed: () {
-                    js.context.callMethod('open', ['https://github.com/egorozh']);
+                    UrlHelper.open(myGithubUrl);
                   },
                 ),
               ],
