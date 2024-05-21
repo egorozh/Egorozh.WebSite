@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
 import '../../../../gen/assets.gen.dart';
-import '../../../router/router.dart';
+import '../../../../router/router.dart';
 import '../widgets/widgets.dart';
 
 class DesktopContent extends StatelessWidget {
@@ -22,7 +22,7 @@ class DesktopContent extends StatelessWidget {
               children: [
                 TextButton(child: Text(context.appTexts.about), onPressed: () {}),
                 TextButton(child: Text(context.appTexts.projects), onPressed: () {}),
-                TextButton(child: Text(context.appTexts.blog), onPressed: () {}),
+                TextButton(child: Text(context.appTexts.blog), onPressed: () => context.go(blogRoute)),
                 TextButton(child: Text(context.appTexts.contacts), onPressed: () => context.go(contactsRoute)),
                 TextButton.icon(
                   label: Text(context.appTexts.youtube),

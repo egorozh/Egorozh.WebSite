@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/core.dart';
 import '../widgets/widgets.dart';
-import 'desktop_content.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return switch (AdaptiveHelper.getScreenType(context)) {
-            ScreenType.watch => const _WatchContent(),
-            ScreenType.handset => const _MobileContent(),
-            ScreenType.tablet => const _MiddleContent(),
-            ScreenType.desktop => const DesktopContent(),
-          };
-        },
-      ),
-    );
+    return const WelcomeText();
+    // return Scaffold(
+    //   body: LayoutBuilder(
+    //     builder: (context, constraints) {
+    //       return switch (AdaptiveHelper.getScreenType(context)) {
+    //         ScreenType.watch => const _WatchContent(),
+    //         ScreenType.handset => const _MobileContent(),
+    //         ScreenType.tablet => const _MiddleContent(),
+    //         ScreenType.desktop => const DesktopContent(),
+    //       };
+    //     },
+    //   ),
+    // );
   }
 }
 
