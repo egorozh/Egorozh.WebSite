@@ -7,13 +7,16 @@ import '../../../../core/core.dart';
 class WelcomeText extends StatelessWidget {
   const WelcomeText({
     super.key,
+    required this.screenType,
   });
+
+  final ScreenType screenType;
 
   @override
   Widget build(BuildContext context) {
     final texts = Theme.of(context).textTheme;
 
-    final coreStyle = switch (AdaptiveHelper.getScreenType(context)) {
+    final coreStyle = switch (screenType) {
       ScreenType.desktop => texts.displayMedium,
       ScreenType.tablet => texts.headlineSmall,
       ScreenType.handset => texts.headlineSmall,

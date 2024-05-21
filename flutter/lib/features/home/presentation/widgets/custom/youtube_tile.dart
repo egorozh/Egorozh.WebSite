@@ -11,9 +11,7 @@ class YoutubeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return TileIconButton(
       assetName: Assets.icons.youtube,
-      onTap: () {
-        UrlHelper.open(myYoutubeChannelUrl);
-      },
+      onTap: () => UrlHelper.open(myYoutubeChannelUrl),
     );
   }
 }

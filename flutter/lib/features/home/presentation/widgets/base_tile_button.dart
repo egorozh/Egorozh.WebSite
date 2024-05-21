@@ -12,7 +12,7 @@ class BaseTileButton extends StatelessWidget {
 
   final ScreenType device;
   final Widget child;
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +24,14 @@ class BaseTileButton extends StatelessWidget {
             color: Theme.of(context).colorScheme.primaryContainer,
             borderRadius: BorderRadius.circular(0),
           ),
-          padding: EdgeInsets.all(switch (device) {
-            ScreenType.desktop => 24,
-            ScreenType.tablet => 48,
-            ScreenType.handset => 12,
-            ScreenType.watch => 8,
-          }),
+          padding: EdgeInsets.all(
+            switch (device) {
+              ScreenType.desktop => 24,
+              ScreenType.tablet => 48,
+              ScreenType.handset => 12,
+              ScreenType.watch => 8,
+            },
+          ),
           child: child,
         ),
       ),

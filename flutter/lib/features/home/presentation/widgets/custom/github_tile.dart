@@ -11,9 +11,7 @@ class GithubTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return TileIconButton(
       assetName: Assets.icons.github,
-      onTap: () {
-        UrlHelper.open(myGithubUrl);
-      },
+      onTap: () => UrlHelper.open(myGithubUrl),
     );
   }
 }

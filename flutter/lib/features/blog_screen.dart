@@ -6,11 +6,13 @@ class BlogScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Markdown(
-        selectable: true,
-        data: 'Insert emoji here😀 ',
-      ),
+    return const Wrap(
+      children: [
+        Markdown(
+          selectable: false,
+          data: 'Insert emoji here😀 ',
+        ),
+      ],
     );
   }
 }

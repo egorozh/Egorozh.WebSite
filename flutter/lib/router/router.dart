@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/features.dart';
 
+const String homeRoute = "/";
 const String contactsRoute = "/contacts";
 const String blogRoute = "/blog";
 
@@ -10,28 +11,19 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: homeRoute,
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
-      pageBuilder: (context, state, child) {
-        return NoTransitionPage(
-          child: ScaffoldWithNavBar(
-            location: state.uri.path,
-            child: child,
-          ),
-        );
-      },
+      pageBuilder: (context, state, child) => NoTransitionPage(
+        child: ScaffoldWithNavBar(location: state.uri.path, child: child),
+      ),
       routes: [
         GoRoute(
-          path: '/',
+          path: homeRoute,
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) {
-            return const NoTransitionPage(
-              child: HomeScreen(),
-            );
-          },
+          pageBuilder: (context, state) => const NoTransitionPage(child: HomeScreen()),
         ),
         GoRoute(
           path: contactsRoute,

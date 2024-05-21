@@ -7,19 +7,17 @@ class ContactsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Scaffold(
-      body: Wrap(
-        children: [
-          _Tile(color: colorScheme.primary, text: 'primary'),
-          _Tile(color: colorScheme.onPrimary, text: 'onPrimary'),
-          _Tile(color: colorScheme.secondary, text: 'secondary'),
-          _Tile(color: colorScheme.onSecondary, text: 'onSecondary'),
-          _Tile(color: colorScheme.error, text: 'error'),
-          _Tile(color: colorScheme.onError, text: 'onError'),
-          _Tile(color: colorScheme.surface, text: 'surface'),
-          _Tile(color: colorScheme.onSurface, text: 'onSurface'),
-        ],
-      ),
+    return Wrap(
+      children: [
+        _Tile(color: colorScheme.primary, text: 'primary'),
+        _Tile(color: colorScheme.onPrimary, text: 'onPrimary'),
+        _Tile(color: colorScheme.secondary, text: 'secondary'),
+        _Tile(color: colorScheme.onSecondary, text: 'onSecondary'),
+        _Tile(color: colorScheme.error, text: 'error'),
+        _Tile(color: colorScheme.onError, text: 'onError'),
+        _Tile(color: colorScheme.surface, text: 'surface'),
+        _Tile(color: colorScheme.onSurface, text: 'onSurface'),
+      ],
     );
   }
 }

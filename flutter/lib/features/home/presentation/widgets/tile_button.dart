@@ -8,9 +8,11 @@ class TileTextButton extends StatelessWidget {
   const TileTextButton({
     super.key,
     required this.text,
+    required this.onTap,
   });
 
   final String text;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class TileTextButton extends StatelessWidget {
     };
 
     return BaseTileButton(
-      onTap: () {},
+      onTap: onTap,
       child: Center(
         child: Text(text, textAlign: TextAlign.center, style: style),
       ),
