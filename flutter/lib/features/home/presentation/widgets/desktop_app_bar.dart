@@ -66,21 +66,18 @@ class TileNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: const EdgeInsets.all(24),
-      sliver: SliverGrid.count(
-        crossAxisSpacing: 24,
-        mainAxisSpacing: 24,
-        crossAxisCount: screenType == ScreenType.tablet ? 3 : 2,
-        children: [
-          const YoutubeTile(),
-          TileTextButton(text: context.appTexts.about, onTap: currentLocation == homeRoute ? null : () => context.go(homeRoute)),
-          TileTextButton(text: context.appTexts.projects, onTap: null),
-          TileTextButton(text: context.appTexts.blog, onTap: currentLocation == blogRoute ? null : () => context.go(blogRoute)),
-          TileTextButton(text: context.appTexts.contacts, onTap: currentLocation == contactsRoute ? null : () => context.go(contactsRoute)),
-          const GithubTile(),
-        ],
-      ),
+    return GridView.count(
+      crossAxisSpacing: 24,
+      mainAxisSpacing: 24,
+      crossAxisCount: screenType == ScreenType.tablet ? 3 : 2,
+      children: [
+        const YoutubeTile(),
+        TileTextButton(text: context.appTexts.about, onTap: currentLocation == homeRoute ? null : () => context.go(homeRoute)),
+        TileTextButton(text: context.appTexts.projects, onTap: null),
+        TileTextButton(text: context.appTexts.blog, onTap: currentLocation == blogRoute ? null : () => context.go(blogRoute)),
+        TileTextButton(text: context.appTexts.contacts, onTap: currentLocation == contactsRoute ? null : () => context.go(contactsRoute)),
+        const GithubTile(),
+      ],
     );
   }
 }

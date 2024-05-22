@@ -11,25 +11,30 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final screenType = AdaptiveHelper.getScreenType(context);
+    return LayoutBuilder(builder: (context, constraints) {
+      final screenType = AdaptiveHelper.getScreenType(context);
+      return switch (screenType) {
+        ScreenType.desktop => _DesktopContent(location: location, child: child),
+        _ => _TileContent(child, screenType, location),
+      };
+    });
+  }
+}
 
-            return switch (screenType) {
-              ScreenType.desktop => CustomScrollView(slivers: [
-                  SliverAppBar(
-                    title: DesktopAppBar(currentLocation: location),
-                    pinned: true,
-                  ),
-                  SliverToBoxAdapter(child: child)
-                ]),
-              _ => _TileContent(child, screenType, location),
-            };
-          },
-        ),
-      ),
+class _DesktopContent extends StatelessWidget {
+  const _DesktopContent({
+    required this.location,
+    required this.child,
+  });
+
+  final String location;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: DesktopAppBar(currentLocation: location)),
+      body: child,
     );
   }
 }
@@ -43,11 +48,15 @@ class _TileContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(child: child),
-        TileNavBar(screenType, currentLocation: currentLocation),
-      ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            child,
+            //TileNavBar(screenType, currentLocation: currentLocation),
+          ],
+        ),
+      ),
     );
   }
 }
