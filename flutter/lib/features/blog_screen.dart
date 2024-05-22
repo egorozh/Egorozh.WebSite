@@ -16,13 +16,13 @@ class _BlogScreenState extends State<BlogScreen> {
 
   @override
   void initState() {
-    dio.get('https://github.com/egorozh/Tabalonia/raw/develop/README.md').then(
-      (res) {
-        data = res.data;
-      },
-    ).catchError((ex) {
-      debugPrint(ex.toString());
-    });
+    // dio.get('https://github.com/egorozh/Tabalonia/raw/develop/README.md').then(
+    //   (res) {
+    //     data = res.data;
+    //   },
+    // ).catchError((ex) {
+    //   debugPrint(ex.toString());
+    // });
 
     super.initState();
   }

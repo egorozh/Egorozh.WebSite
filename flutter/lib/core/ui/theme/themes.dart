@@ -5,7 +5,7 @@ final darkTheme = ThemeData(
     brightness: Brightness.dark,
     seedColor: const Color(0xFF00FEEB),
     //secondary: const Color(0xFFFE0012),
-    surface: const Color(0xFF250036),
+    //surface: const Color(0xFF250036),
   ),
   useMaterial3: true,
 );

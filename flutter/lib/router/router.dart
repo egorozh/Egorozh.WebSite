@@ -6,6 +6,7 @@ import '../features/features.dart';
 const String homeRoute = "/";
 const String contactsRoute = "/contacts";
 const String blogRoute = "/blog";
+const String projectsRoute = "/projects";
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();

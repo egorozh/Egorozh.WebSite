@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
           ScreenType.watch => 12,
         },
       ),
-      child: WelcomeText(screenType: screenType),
+      child: SingleChildScrollView(child: WelcomeText(screenType: screenType)),
     );
   }
 }
