@@ -3,16 +3,18 @@ import 'package:go_router/go_router.dart';
 
 import '../features/features.dart';
 
-const String homeRoute = "/";
-const String contactsRoute = "/contacts";
-const String blogRoute = "/blog";
-const String projectsRoute = "/projects";
+class Routes {
+  static const String homeRoute = "/";
+  static const String contactsRoute = "/contacts";
+  static const String blogRoute = "/blog";
+  static const String projectsRoute = "/projects";
+}
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: homeRoute,
+  initialLocation: Routes.homeRoute,
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
@@ -22,17 +24,17 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: homeRoute,
+          path: Routes.homeRoute,
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) => const NoTransitionPage(child: HomeScreen()),
         ),
         GoRoute(
-          path: contactsRoute,
+          path: Routes.contactsRoute,
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) => const NoTransitionPage(child: ContactsScreen()),
         ),
         GoRoute(
-          path: blogRoute,
+          path: Routes.blogRoute,
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) => const NoTransitionPage(child: BlogScreen()),
         ),
