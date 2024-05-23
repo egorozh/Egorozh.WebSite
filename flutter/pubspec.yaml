@@ -22,6 +22,7 @@ dependencies:
   go_router: ^14.1.2
   flutter_markdown: ^0.7.1
   dio: ^5.4.3+1
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   flutter_test:

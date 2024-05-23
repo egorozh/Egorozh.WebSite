@@ -1,7 +1,9 @@
-import 'dart:js' as js;
+import 'package:url_launcher/url_launcher.dart';
 
 class UrlHelper {
-  static void open(String url) {
-    js.context.callMethod('open', [url]);
+  static Future<void> open(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    }
   }
 }
