@@ -1,14 +1,31 @@
 import 'package:egorozh_cv/localization.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/core.dart';
 
-class WelcomeText extends StatelessWidget {
-  const WelcomeText({
-    super.key,
-    required this.screenType,
-  });
+class AboutScreen extends StatelessWidget {
+  const AboutScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final screenType = AdaptiveHelper.getScreenType(context);
+
+    return Padding(
+      padding: EdgeInsets.all(
+        switch (screenType) {
+          ScreenType.desktop => 80,
+          ScreenType.tablet => 48,
+          ScreenType.handset => 24,
+          ScreenType.watch => 12,
+        },
+      ),
+      child: SingleChildScrollView(child: _WelcomeText(screenType: screenType)),
+    );
+  }
+}
+
+class _WelcomeText extends StatelessWidget {
+  const _WelcomeText({required this.screenType});
 
   final ScreenType screenType;
 
@@ -16,16 +33,14 @@ class WelcomeText extends StatelessWidget {
   Widget build(BuildContext context) {
     final texts = Theme.of(context).textTheme;
 
-    final coreStyle = switch (screenType) {
+    final style = switch (screenType) {
       ScreenType.desktop => texts.displayMedium,
-      ScreenType.tablet => texts.headlineSmall,
-      ScreenType.handset => texts.headlineSmall,
-      ScreenType.watch => texts.headlineSmall,
+      ScreenType.tablet => texts.displaySmall,
+      ScreenType.handset => texts.displaySmall,
+      ScreenType.watch => texts.displaySmall,
     };
 
-    final style = GoogleFonts.ubuntu(textStyle: coreStyle);
-
-    final primaryStyle = style.copyWith(color: Theme.of(context).colorScheme.primary);
+    final primaryStyle = style!.copyWith(color: Theme.of(context).colorScheme.primary);
 
     return Column(
       children: [

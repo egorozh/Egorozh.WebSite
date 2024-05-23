@@ -11,41 +11,45 @@ class ContactsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: () => UrlHelper.open("tel:79818852110"),
-            child: const Text("+7-981-885-21-10"),
-          ),
-          const SizedBox(height: 12),
-          TextButton(
-            onPressed: () => UrlHelper.open('mailto:zheludkov.egor@mail.ru'),
-            child: const Text("zheludkov.egor@mail.ru"),
-          ),
-          const SizedBox(height: 12),
-          TextButton.icon(
-            label: Text(context.appTexts.youtube),
-            icon: SvgPicture.asset(
-              Assets.icons.youtube,
-              colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-              width: 24,
-              height: 24,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+              onPressed: () => UrlHelper.open("tel:79818852110"),
+              child: const Text("+7-981-885-21-10"),
             ),
-            onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
-          ),
-          const SizedBox(height: 12),
-          TextButton.icon(
-            label: Text(context.appTexts.github),
-            icon: SvgPicture.asset(
-              Assets.icons.github,
-              colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-              width: 24,
-              height: 24,
+            const SizedBox(height: 12),
+            TextButton(
+              onPressed: () => UrlHelper.open('mailto:$myEmail'),
+              child: const Text(myEmail),
             ),
-            onPressed: () => UrlHelper.open(myGithubUrl),
-          ),
-        ],
+            const SizedBox(height: 12),
+            TextButton.icon(
+              label: Text(context.appTexts.youtube),
+              icon: SvgPicture.asset(
+                Assets.icons.youtube,
+                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
+            ),
+            const SizedBox(height: 12),
+            TextButton.icon(
+              label: Text(context.appTexts.github),
+              icon: SvgPicture.asset(
+                Assets.icons.github,
+                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () => UrlHelper.open(myGithubUrl),
+            ),
+          ],
+        ),
       ),
     );
   }

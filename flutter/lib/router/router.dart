@@ -20,13 +20,13 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       pageBuilder: (context, state, child) => NoTransitionPage(
-        child: ScaffoldWithNavBar(location: state.uri.path, child: child),
+        child: HomeScreen(location: state.uri.path, child: child),
       ),
       routes: [
         GoRoute(
           path: Routes.homeRoute,
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) => const NoTransitionPage(child: HomeScreen()),
+          pageBuilder: (context, state) => const NoTransitionPage(child: AboutScreen()),
         ),
         GoRoute(
           path: Routes.contactsRoute,
