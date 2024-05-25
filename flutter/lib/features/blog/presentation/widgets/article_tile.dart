@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/ui/ui.dart';
+import '../../../../core/core.dart';
 
-class ProjectTile extends StatelessWidget {
-  const ProjectTile({
+class ArticleTile extends StatelessWidget {
+  const ArticleTile({
     super.key,
     required this.title,
     required this.description,
@@ -23,7 +23,7 @@ class ProjectTile extends StatelessWidget {
       description: description,
       onTap: onTap,
       screenType: screenType,
-      buttonText: "Перейти",
+      buttonText: "Читать далее",
     );
   }
 }

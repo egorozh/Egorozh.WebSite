@@ -1,10 +1,13 @@
-import 'package:egorozh_cv/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
+import '../../../../locator/locator.dart';
+import '../../../../router/router.dart';
+import '../../domain/domain.dart';
 import '../manager/blog_bloc.dart';
+import '../widgets/widgets.dart';
 
 class BlogScreen extends StatelessWidget {
   const BlogScreen({super.key});
@@ -12,11 +15,11 @@ class BlogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => BlogBloc()..add(BlogEvent.started(context)),
+      create: (_) => locator<BlogBloc>()..add(BlogEvent.started(context)),
       child: BlocBuilder<BlogBloc, BlogState>(
         builder: (context, state) => state.map(
           loading: (s) => const Center(child: CircularProgressIndicator()),
-          loaded: (s) => _LoadedContent(s.markdownData),
+          loaded: (s) => _LoadedContent(s.articles),
           failure: (s) => const _FailureContent(),
         ),
       ),
@@ -40,69 +43,34 @@ class _FailureContent extends StatelessWidget {
 }
 
 class _LoadedContent extends StatelessWidget {
-  const _LoadedContent(this.markdownData);
+  const _LoadedContent(this.articles);
 
-  final String markdownData;
+  final List<ArticleListInfo> articles;
 
   @override
   Widget build(BuildContext context) {
+    final screenType = AdaptiveHelper.getScreenType(context);
+
+    final paddings = switch (screenType) {
+      ScreenType.desktop => 24.0,
+      _ => 12.0,
+    };
+
     return Padding(
-      padding: const EdgeInsets.all(24.0),
+      padding: EdgeInsets.all(paddings),
       child: ListView.separated(
         itemBuilder: (context, index) {
+          final article = articles[index];
+
           return ArticleTile(
-            title: "Первый взгляд на переход с Xamarin Native на Flutter",
-            description:
-                "Это история о переходе с Xamarin Native на Flutter. В ней я постараюсь сравнить оба фреймворка с точки зрения личного опыта. Также в качестве лирического отступления в конце статьи порассуждаю о своём идеальном мобильном фреймворке мечты.",
+            title: article.title,
+            description: article.description,
             onTap: () => context.go(Routes.articleRoute),
+            screenType: screenType,
           );
         },
-        separatorBuilder: (c, i) => const SizedBox(height: 12),
-        itemCount: 1,
-      ),
-    );
-  }
-}
-
-class ArticleTile extends StatelessWidget {
-  const ArticleTile({
-    super.key,
-    required this.title,
-    required this.description,
-    required this.onTap,
-  });
-
-  final String title;
-  final String description;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final texts = Theme.of(context).textTheme;
-
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: texts.headlineMedium),
-                  const SizedBox(height: 8),
-                  Text(description, style: texts.titleLarge),
-                ],
-              ),
-            ),
-            const SizedBox(width: 12),
-            TextButton(
-              onPressed: onTap,
-              child: const Text("Читать далее"),
-            )
-          ],
-        ),
+        separatorBuilder: (c, i) => SizedBox(height: paddings),
+        itemCount: articles.length,
       ),
     );
   }

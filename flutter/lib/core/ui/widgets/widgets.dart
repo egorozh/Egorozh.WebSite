@@ -1,2 +1,2 @@
-//GENERATED BARREL FILE 
-export 'failure_content.dart'; 
+export 'base_tile.dart';
+export 'failure_content.dart';
