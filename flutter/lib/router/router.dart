@@ -40,6 +40,11 @@ final router = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) => const NoTransitionPage(child: BlogScreen()),
         ),
+        GoRoute(
+          path: Routes.projectsRoute,
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) => const NoTransitionPage(child: MyProjectsScreen()),
+        ),
       ],
     ),
     GoRoute(

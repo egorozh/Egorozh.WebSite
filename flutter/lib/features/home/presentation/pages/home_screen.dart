@@ -40,7 +40,10 @@ class _DesktopAppBar extends StatelessWidget {
           onPressed: currentLocation == Routes.homeRoute ? null : () => context.go(Routes.homeRoute),
           child: Text(context.appTexts.about),
         ),
-        TextButton(child: Text(context.appTexts.projects), onPressed: () {}),
+        TextButton(
+          child: Text(context.appTexts.projects),
+          onPressed: currentLocation == Routes.projectsRoute ? null : () => context.go(Routes.projectsRoute),
+        ),
         TextButton(
           onPressed: currentLocation == Routes.blogRoute ? null : () => context.go(Routes.blogRoute),
           child: Text(context.appTexts.blog),

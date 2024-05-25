@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/core.dart';
 import '../manager/blog_bloc.dart';
 
 class BlogScreen extends StatelessWidget {
@@ -29,16 +30,10 @@ class _FailureContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          const Text("Ошибка загрузки"),
-          FilledButton(
-            onPressed: () {
-              context.read<BlogBloc>().add(const BlogEvent.load());
-            },
-            child: const Text("Попробовать снова"),
-          ),
-        ],
+      child: FailureContent(
+        tryAgainAction: () {
+          context.read<BlogBloc>().add(const BlogEvent.load());
+        },
       ),
     );
   }
@@ -51,18 +46,64 @@ class _LoadedContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text("Первый взгляд на переход с Xamarin Native на Flutter"),
-        const Text(
-            "Это история о переходе с Xamarin Native на Flutter. В ней я постараюсь сравнить оба фреймворка с точки зрения личного опыта. Также в качестве лирического отступления в конце статьи порассуждаю о своём идеальном мобильном фреймворке мечты."),
-        TextButton(
-          onPressed: () {
-            context.go(Routes.articleRoute);
-          },
-          child: const Text("Читать далее"),
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: ListView.separated(
+        itemBuilder: (context, index) {
+          return ArticleTile(
+            title: "Первый взгляд на переход с Xamarin Native на Flutter",
+            description:
+                "Это история о переходе с Xamarin Native на Flutter. В ней я постараюсь сравнить оба фреймворка с точки зрения личного опыта. Также в качестве лирического отступления в конце статьи порассуждаю о своём идеальном мобильном фреймворке мечты.",
+            onTap: () => context.go(Routes.articleRoute),
+          );
+        },
+        separatorBuilder: (c, i) => const SizedBox(height: 12),
+        itemCount: 1,
+      ),
+    );
+  }
+}
+
+class ArticleTile extends StatelessWidget {
+  const ArticleTile({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.onTap,
+  });
+
+  final String title;
+  final String description;
+  final Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final texts = Theme.of(context).textTheme;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: texts.headlineMedium),
+                  const SizedBox(height: 8),
+                  Text(description, style: texts.titleLarge),
+                ],
+              ),
+            ),
+            const SizedBox(width: 12),
+            TextButton(
+              onPressed: onTap,
+              child: const Text("Читать далее"),
+            )
+          ],
         ),
-      ],
+      ),
     );
   }
 }
