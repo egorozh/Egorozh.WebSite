@@ -1,7 +1,7 @@
 import 'package:egorozh_cv/localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/core.dart';
+import '../../../../../../../core/core.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -43,7 +43,7 @@ class _WelcomeText extends StatelessWidget {
     return Column(
       children: [
         Text.rich(
-          textAlign: TextAlign.justify,
+          textAlign: TextAlign.start,
           TextSpan(
             children: [
               TextSpan(text: context.appTexts.welcome_text1, style: style),

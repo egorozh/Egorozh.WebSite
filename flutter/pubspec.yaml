@@ -37,6 +37,7 @@ dev_dependencies:
   flutter_gen_runner: ^5.5.0+1
   freezed: ^2.5.2
   injectable_generator: ^2.6.1
+  json_serializable: ^6.8.0
 
 flutter:
   uses-material-design: true
@@ -46,6 +47,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/article1.md
+    - assets/my_projects.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

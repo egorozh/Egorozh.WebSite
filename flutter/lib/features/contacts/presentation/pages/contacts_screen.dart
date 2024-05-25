@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../core/core.dart';
-import '../gen/assets.gen.dart';
-import '../localization.dart';
+import '../../../../core/core.dart';
+import '../../../../gen/assets.gen.dart';
+import '../../../../localization.dart';
 
 class ContactsScreen extends StatelessWidget {
   const ContactsScreen({super.key});

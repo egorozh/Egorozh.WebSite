@@ -15,15 +15,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      final screenType = AdaptiveHelper.getScreenType(context);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenType = AdaptiveHelper.getScreenType(context);
 
-      return Scaffold(
-        appBar: screenType == ScreenType.desktop ? AppBar(title: _DesktopAppBar(location)) : null,
-        body: child,
-        bottomNavigationBar: screenType != ScreenType.desktop ? _MobileNavBar(location) : null,
-      );
-    });
+        return Scaffold(
+          appBar: screenType == ScreenType.desktop ? AppBar(title: _DesktopAppBar(location)) : null,
+          body: child,
+          bottomNavigationBar: screenType != ScreenType.desktop ? _MobileNavBar(location) : null,
+        );
+      },
+    );
   }
 }
 
