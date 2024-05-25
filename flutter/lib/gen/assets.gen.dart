@@ -23,5 +23,9 @@ class $AssetsIconsGen {
 class Assets {
   Assets._();
 
+  static const String article1 = 'assets/article1.md';
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+
+  /// List of all assets
+  static List<String> get values => [article1];
 }
