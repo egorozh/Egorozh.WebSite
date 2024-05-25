@@ -1,6 +1,7 @@
+import 'package:egorozh_cv/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:go_router/go_router.dart';
 
 import '../manager/blog_bloc.dart';
 
@@ -50,9 +51,18 @@ class _LoadedContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Markdown(
-      selectable: true,
-      data: markdownData,
+    return Column(
+      children: [
+        const Text("Первый взгляд на переход с Xamarin Native на Flutter"),
+        const Text(
+            "Это история о переходе с Xamarin Native на Flutter. В ней я постараюсь сравнить оба фреймворка с точки зрения личного опыта. Также в качестве лирического отступления в конце статьи порассуждаю о своём идеальном мобильном фреймворке мечты."),
+        TextButton(
+          onPressed: () {
+            context.go(Routes.articleRoute);
+          },
+          child: const Text("Читать далее"),
+        ),
+      ],
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/features/blog/presentation/pages/article_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,7 @@ class Routes {
   static const String homeRoute = "/";
   static const String contactsRoute = "/contacts";
   static const String blogRoute = "/blog";
+  static const String articleRoute = "/article";
   static const String projectsRoute = "/projects";
 }
 
@@ -40,20 +42,12 @@ final router = GoRouter(
         ),
       ],
     ),
-    // GoRoute(
-    //   parentNavigatorKey: _rootNavigatorKey,
-    //   path: '/login',
-    //   pageBuilder: (context, state) {
-    //     return NoTransitionPage(
-    //       key: UniqueKey(),
-    //       child: Scaffold(
-    //         appBar: AppBar(),
-    //         body: const Center(
-    //           child: Text("Login"),
-    //         ),
-    //       ),
-    //     );
-    //   },
-    // ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: Routes.articleRoute,
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(child: ArticleScreen());
+      },
+    ),
   ],
 );
