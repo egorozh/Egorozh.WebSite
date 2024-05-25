@@ -5,6 +5,10 @@ final _textTheme = TextTheme(
   displayLarge: GoogleFonts.ubuntu(),
   displayMedium: GoogleFonts.ubuntu(),
   displaySmall: GoogleFonts.ubuntu(),
+  headlineSmall: GoogleFonts.ubuntu(),
+  headlineMedium: GoogleFonts.ubuntu(),
+  titleLarge: GoogleFonts.roboto(),
+  bodyMedium: GoogleFonts.roboto(),
 );
 
 final darkTheme = ThemeData(

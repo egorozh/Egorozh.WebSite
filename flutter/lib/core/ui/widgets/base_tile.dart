@@ -53,7 +53,13 @@ class _DesktopTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: texts.headlineMedium),
+                  Text(
+                    title,
+                    style: texts.headlineMedium!.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   Text(description, style: texts.titleLarge),
                 ],
@@ -95,7 +101,13 @@ class _MobileTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: texts.headlineMedium),
+              Text(
+                title,
+                style: texts.headlineMedium!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
               const SizedBox(height: 8),
               Text(description, style: texts.titleLarge),
             ],

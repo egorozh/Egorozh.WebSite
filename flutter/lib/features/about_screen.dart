@@ -35,9 +35,7 @@ class _WelcomeText extends StatelessWidget {
 
     final style = switch (screenType) {
       ScreenType.desktop => texts.displayMedium,
-      ScreenType.tablet => texts.displaySmall,
-      ScreenType.handset => texts.displaySmall,
-      ScreenType.watch => texts.displaySmall,
+      _ => texts.headlineSmall,
     };
 
     final primaryStyle = style!.copyWith(color: Theme.of(context).colorScheme.primary);
