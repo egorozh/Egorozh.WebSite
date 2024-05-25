@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/features/my_projects/domain/domain.dart';
 import 'package:egorozh_cv/locator/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,29 +14,48 @@ class MyProjectsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<MyProjectsBloc>()..add(MyProjectsEvent.started(context)),
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: BlocBuilder<MyProjectsBloc, MyProjectsState>(
-          builder: (context, state) {
-            return state.map(
-              loading: (s) => const Center(child: CircularProgressIndicator()),
-              loaded: (s) => ListView.separated(
-                itemCount: s.projects.length,
-                itemBuilder: (context, index) {
-                  final project = s.projects[index];
+      child: BlocBuilder<MyProjectsBloc, MyProjectsState>(
+        builder: (context, state) {
+          return state.map(
+            loading: (s) => const Center(child: CircularProgressIndicator()),
+            loaded: (s) => _LoadedContent(projects: s.projects),
+            failure: (s) => const _FailureContent(),
+          );
+        },
+      ),
+    );
+  }
+}
 
-                  return ProjectTile(
-                    title: project.title,
-                    description: project.description,
-                    onTap: () => UrlHelper.open(project.url),
-                  );
-                },
-                separatorBuilder: (context, index) => const SizedBox(height: 24),
-              ),
-              failure: (s) => const _FailureContent(),
-            );
-          },
-        ),
+class _LoadedContent extends StatelessWidget {
+  const _LoadedContent({required this.projects});
+
+  final List<ProjectListInfo> projects;
+
+  @override
+  Widget build(BuildContext context) {
+    final screenType = AdaptiveHelper.getScreenType(context);
+
+    final paddings = switch (screenType) {
+      ScreenType.desktop => 24.0,
+      _ => 12.0,
+    };
+
+    return Padding(
+      padding: EdgeInsets.all(paddings),
+      child: ListView.separated(
+        itemCount: projects.length,
+        itemBuilder: (context, index) {
+          final project = projects[index];
+
+          return ProjectTile(
+            title: project.title,
+            description: project.description,
+            onTap: () => UrlHelper.open(project.url),
+            screenType: screenType,
+          );
+        },
+        separatorBuilder: (context, index) => SizedBox(height: paddings),
       ),
     );
   }
