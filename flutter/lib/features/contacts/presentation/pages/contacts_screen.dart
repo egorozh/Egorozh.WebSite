@@ -17,10 +17,10 @@ class ContactsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-              onPressed: () => UrlHelper.open("tel:79818852110"),
-              child: const Text("+7-981-885-21-10"),
-            ),
+            // TextButton(
+            //   onPressed: () => UrlHelper.open("tel:79818852110"),
+            //   child: const Text("+7-981-885-21-10"),
+            // ),
             const SizedBox(height: 12),
             TextButton(
               onPressed: () => UrlHelper.open('mailto:$myEmail'),
