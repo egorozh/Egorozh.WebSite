@@ -11,6 +11,7 @@ void main() async {
 
   configureDependencies();
 
+  locator.registerLazySingleton(() => BlogApi());
   locator.registerLazySingleton(() => ProjectsApi());
 
   //setUrlStrategy(PathUrlStrategy());

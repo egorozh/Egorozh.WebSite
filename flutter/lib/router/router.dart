@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/core/core.dart';
 import 'package:egorozh_cv/features/blog/presentation/pages/article_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -49,9 +50,9 @@ final router = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
-      path: Routes.articleRoute,
+      path: "${Routes.articleRoute}/:id",
       pageBuilder: (context, state) {
-        return const NoTransitionPage(child: ArticleScreen());
+        return NoTransitionPage(child: ArticleScreen(id: DomainId.intId(id: int.tryParse(state.pathParameters['id'] ?? "0") ?? 0)));
       },
     ),
   ],

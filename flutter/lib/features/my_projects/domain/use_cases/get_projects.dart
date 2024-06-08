@@ -9,5 +9,5 @@ class GetProjects {
 
   GetProjects(this._myProjectsRepository);
 
-  Future<CommonDomainResult<List<ProjectListInfo>>> call() => _myProjectsRepository.getProjects();
+  Future<CommonDomainResult<List<ProjectListInfo>>> call(String locale) => _myProjectsRepository.getProjects(locale);
 }

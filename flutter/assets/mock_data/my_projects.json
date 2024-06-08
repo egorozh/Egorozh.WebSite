@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Site-card",
+    "description": "Site-card on flutter-web",
+    "url": "https://github.com/egorozh/Egorozh.WebSite"
+  },
+  {
+    "title": "Tabalonia",
+    "description": "Library for create dragging tabs like browsers",
+    "url": "https://github.com/egorozh/Tabalonia"
+  },
+  {
+    "title": "Egorozh.ColorPicker",
+    "description": "ColorPicker for AvaloniaUI and WPF",
+    "url": "https://github.com/egorozh/Egorozh.ColorPicker"
+  },
+  {
+    "title": "X-Filer",
+    "description": "File explorer with dragging tabs like Google Chrome",
+    "url": "https://github.com/egorozh/X-Filer"
+  }
+]

@@ -1,18 +1,31 @@
-import 'package:egorozh_cv/core/domain/entities/domain_result.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/domain.dart';
+import '../../../../core/core.dart';
+import '../../blog.dart';
 
 @LazySingleton(as: IBlogRepository)
 class BlogRepository implements IBlogRepository {
+  final BlogApi _blogApi;
+
+  BlogRepository(this._blogApi);
+
   @override
-  Future<CommonDomainResult<List<ArticleListInfo>>> getArticles() async {
-    return Success([
-      const ArticleListInfo(
-        title: "Первый взгляд на переход с Xamarin Native на Flutter",
-        description:
-            "Это история о переходе с Xamarin Native на Flutter. В ней я постараюсь сравнить оба фреймворка с точки зрения личного опыта. Также в качестве лирического отступления в конце статьи порассуждаю о своём идеальном мобильном фреймворке мечты.",
-      )
-    ]);
+  Future<CommonDomainResult<List<ArticleListInfo>>> getArticles(String locale) async {
+    try {
+      final apiResult = await _blogApi.getArticles(locale);
+      return Success(apiResult.map((m) => m.toDomain()).toList());
+    } on Exception catch (_) {
+      return Error(DomainErrorType.serverError);
+    }
+  }
+
+  @override
+  Future<CommonDomainResult<String>> getArticle(DomainId id, String locale) async {
+    try {
+      final apiResult = await _blogApi.getArticle(id.toInt(), locale);
+      return Success(apiResult);
+    } on Exception catch (_) {
+      return Error(DomainErrorType.serverError);
+    }
   }
 }

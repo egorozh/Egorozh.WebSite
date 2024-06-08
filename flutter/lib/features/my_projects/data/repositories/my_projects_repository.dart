@@ -11,9 +11,12 @@ class MyProjectsRepository implements IMyProjectsRepository {
   MyProjectsRepository(this._projectsApi);
 
   @override
-  Future<CommonDomainResult<List<ProjectListInfo>>> getProjects() async {
-    final apiResult = await _projectsApi.getProjects();
-
-    return Success(apiResult.map((m) => m.toDomain()).toList());
+  Future<CommonDomainResult<List<ProjectListInfo>>> getProjects(String locale) async {
+    try {
+      final apiResult = await _projectsApi.getProjects(locale);
+      return Success(apiResult.map((m) => m.toDomain()).toList());
+    } on Exception catch (_) {
+      return Error(DomainErrorType.serverError);
+    }
   }
 }

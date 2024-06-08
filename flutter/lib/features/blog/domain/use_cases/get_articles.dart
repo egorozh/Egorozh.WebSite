@@ -9,5 +9,5 @@ class GetArticles {
 
   GetArticles(this._blogRepository);
 
-  Future<CommonDomainResult<List<ArticleListInfo>>> call() => _blogRepository.getArticles();
+  Future<CommonDomainResult<List<ArticleListInfo>>> call(String locale) => _blogRepository.getArticles(locale);
 }

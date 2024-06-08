@@ -4,5 +4,5 @@ part of 'blog_bloc.dart';
 class BlogEvent with _$BlogEvent {
   const factory BlogEvent.started(BuildContext context) = _Started;
 
-  const factory BlogEvent.load({Completer<void>? completer}) = _Load;
+  const factory BlogEvent.load({Completer<void>? completer, String? locale}) = _Load;
 }

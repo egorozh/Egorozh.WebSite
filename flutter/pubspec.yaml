@@ -53,8 +53,7 @@ flutter:
 
   assets:
     - assets/icons/
-    - assets/article1.md
-    - assets/my_projects.json
+    - assets/mock_data/
 
 flutter_native_splash:
   color: "#250036" #backgound color

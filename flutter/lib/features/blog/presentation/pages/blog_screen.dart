@@ -16,11 +16,15 @@ class BlogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<BlogBloc>()..add(BlogEvent.started(context)),
-      child: BlocBuilder<BlogBloc, BlogState>(
-        builder: (context, state) => state.map(
-          loading: (s) => const Center(child: CircularProgressIndicator()),
-          loaded: (s) => _LoadedContent(s.articles),
-          failure: (s) => const _FailureContent(),
+      child: BlocListener<AppCubit, AppState>(
+        listenWhen: (prev, next) => prev.locale != next.locale,
+        listener: (context, state) => context.read<BlogBloc>().add(BlogEvent.load(locale: state.locale.languageCode)),
+        child: BlocBuilder<BlogBloc, BlogState>(
+          builder: (context, state) => state.map(
+            loading: (s) => const Center(child: CircularProgressIndicator()),
+            loaded: (s) => _LoadedContent(s.articles),
+            failure: (s) => const _FailureContent(),
+          ),
         ),
       ),
     );
@@ -65,7 +69,7 @@ class _LoadedContent extends StatelessWidget {
           return ArticleTile(
             title: article.title,
             description: article.description,
-            onTap: () => context.go(Routes.articleRoute),
+            onTap: () => context.go("${Routes.articleRoute}/${article.id.toString()}"),
             screenType: screenType,
           );
         },

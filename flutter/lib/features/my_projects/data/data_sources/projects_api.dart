@@ -5,8 +5,10 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../models/models.dart';
 
 class ProjectsApi {
-  Future<List<ProjectListDto>> getProjects() async {
-    final json = await rootBundle.loadString('assets/my_projects.json');
+  Future<List<ProjectListDto>> getProjects(String locale) async {
+    final fileName = locale == "ru" ? "my_projects_ru.json" : "my_projects.json";
+
+    final json = await rootBundle.loadString('assets/mock_data/$fileName');
 
     final jsonDecoded = jsonDecode(json);
     final s = jsonDecoded as List<dynamic>;

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:egorozh_cv/core/domain/entities/domain_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/core.dart';
 import '../../domain/domain.dart';
 
 part 'my_projects_bloc.freezed.dart';
@@ -32,7 +32,9 @@ class MyProjectsBloc extends Bloc<MyProjectsEvent, MyProjectsState> {
   Future<void> _onLoad(_Load event, Emitter<MyProjectsState> emit) async {
     emit(const MyProjectsState.loading());
 
-    final result = await _getProjects();
+    final locale = event.locale ?? Localizations.localeOf(_context).languageCode;
+
+    final result = await _getProjects(locale);
 
     switch (result) {
       case Success<List<ProjectListInfo>, DomainErrorType>():

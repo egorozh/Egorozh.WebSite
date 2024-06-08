@@ -32,7 +32,9 @@ class BlogBloc extends Bloc<BlogEvent, BlogState> {
   Future<void> _onLoad(_Load event, Emitter<BlogState> emit) async {
     emit(const BlogState.loading());
 
-    final result = await _getArticles();
+    final locale = event.locale ?? Localizations.localeOf(_context).languageCode;
+
+    final result = await _getArticles(locale);
 
     switch (result) {
       case Success():

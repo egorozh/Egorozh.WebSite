@@ -1,9 +1,9 @@
-import 'package:egorozh_cv/features/my_projects/domain/domain.dart';
-import 'package:egorozh_cv/locator/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/core.dart';
+import '../../../../locator/locator.dart';
+import '../../domain/domain.dart';
 import '../manager/my_projects_bloc.dart';
 import '../widgets/widgets.dart';
 
@@ -14,14 +14,18 @@ class MyProjectsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<MyProjectsBloc>()..add(MyProjectsEvent.started(context)),
-      child: BlocBuilder<MyProjectsBloc, MyProjectsState>(
-        builder: (context, state) {
-          return state.map(
-            loading: (s) => const Center(child: CircularProgressIndicator()),
-            loaded: (s) => _LoadedContent(projects: s.projects),
-            failure: (s) => const _FailureContent(),
-          );
-        },
+      child: BlocListener<AppCubit, AppState>(
+        listenWhen: (prev, next) => prev.locale != next.locale,
+        listener: (context, state) => context.read<MyProjectsBloc>().add(MyProjectsEvent.load(locale: state.locale.languageCode)),
+        child: BlocBuilder<MyProjectsBloc, MyProjectsState>(
+          builder: (context, state) {
+            return state.map(
+              loading: (s) => const Center(child: CircularProgressIndicator()),
+              loaded: (s) => _LoadedContent(projects: s.projects),
+              failure: (s) => const _FailureContent(),
+            );
+          },
+        ),
       ),
     );
   }

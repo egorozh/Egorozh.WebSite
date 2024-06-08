@@ -2,21 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
+import '../../../../core/core.dart';
+import '../../../../locator/locator.dart';
 import '../manager/article_bloc.dart';
 
 class ArticleScreen extends StatelessWidget {
-  const ArticleScreen({super.key});
+  const ArticleScreen({super.key, required this.id});
+
+  final DomainId id;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ArticleBloc()..add(ArticleEvent.started(context)),
-      child: Scaffold(
-        body: BlocBuilder<ArticleBloc, ArticleState>(
-          builder: (context, state) => state.map(
-            loading: (s) => const Center(child: CircularProgressIndicator()),
-            loaded: (s) => _LoadedContent(s.markdownData),
-            failure: (s) => const _FailureContent(),
+      create: (_) => locator<ArticleBloc>()..add(ArticleEvent.started(context, id)),
+      child: BlocListener<AppCubit, AppState>(
+        listenWhen: (prev, next) => prev.locale != next.locale,
+        listener: (context, state) => context.read<ArticleBloc>().add(ArticleEvent.load(locale: state.locale.languageCode)),
+        child: Scaffold(
+          body: BlocBuilder<ArticleBloc, ArticleState>(
+            builder: (context, state) => state.map(
+              loading: (s) => const Center(child: CircularProgressIndicator()),
+              loaded: (s) => _LoadedContent(s.markdownData),
+              failure: (s) => const _FailureContent(),
+            ),
           ),
         ),
       ),

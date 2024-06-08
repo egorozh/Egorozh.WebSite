@@ -1,2 +1,2 @@
-//GENERATED BARREL FILE 
-export 'get_articles.dart'; 
+export 'get_article.dart';
+export 'get_articles.dart';
