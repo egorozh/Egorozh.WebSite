@@ -4,26 +4,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../gen/assets.gen.dart';
 import '../../core.dart';
 
-class ThemeSwitch extends StatelessWidget {
-  const ThemeSwitch({super.key});
+class LangSwitch extends StatelessWidget {
+  const LangSwitch({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
-        const lightColor = Color(0xFFFFFFFF);
-        const darkColor = Color(0xFF27536B);
+        const lightColor = Color(0xFFF0F0F0);
+        const darkColor = Color(0xFF0052B4);
 
         return Switch(
           inactiveThumbColor: lightColor,
           inactiveTrackColor: lightColor,
           activeTrackColor: darkColor,
           activeColor: darkColor,
-          activeThumbImage: Assets.icons.moon.provider(),
-          inactiveThumbImage: Assets.icons.sun.provider(),
-          value: state.themeMode == ThemeMode.dark,
+          activeThumbImage: Assets.icons.uk.provider(),
+          inactiveThumbImage: Assets.icons.russia.provider(),
+          value: state.locale.languageCode == "en",
           onChanged: (isChecked) {
-            context.read<AppCubit>().changeTheme(isChecked ? ThemeMode.dark : ThemeMode.light);
+            final code = isChecked ? "en" : "ru";
+
+            context.read<AppCubit>().changeLanguage(code);
           },
         );
       },

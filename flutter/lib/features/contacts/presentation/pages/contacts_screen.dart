@@ -51,7 +51,7 @@ class ContactsScreen extends StatelessWidget {
             const SizedBox(height: 48),
             const ThemeSwitch(),
             const SizedBox(height: 12),
-            const LangSelector(),
+            const LangSwitch(),
             const SizedBox(height: 48),
           ],
         ),

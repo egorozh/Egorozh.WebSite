@@ -77,7 +77,7 @@ class _DesktopAppBar extends StatelessWidget {
         const Spacer(),
         const ThemeSwitch(),
         const SizedBox(width: 20),
-        const LangSelector(),
+        const LangSwitch(),
         const SizedBox(width: 20),
       ],
     );
