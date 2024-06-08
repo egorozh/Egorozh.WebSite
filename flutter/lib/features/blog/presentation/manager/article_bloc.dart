@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,6 +19,10 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
   void _onStarted(_Started event, Emitter<ArticleState> emit) {
     _context = event.context;
+
+    final analytics = FirebaseAnalytics.instance;
+
+    analytics.logScreenView(screenName: "ArticleScreen");
 
     add(const ArticleEvent.load());
   }

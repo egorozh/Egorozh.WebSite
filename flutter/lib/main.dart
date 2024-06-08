@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'app.dart';
 import 'features/features.dart';
@@ -8,13 +7,15 @@ import 'firebase_options.dart';
 import 'locator/locator.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   configureDependencies();
 
   locator.registerLazySingleton(() => ProjectsApi());
 
-  setUrlStrategy(PathUrlStrategy());
+  //setUrlStrategy(PathUrlStrategy());
 
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final _ = await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(const EgorozhApp());
 }
