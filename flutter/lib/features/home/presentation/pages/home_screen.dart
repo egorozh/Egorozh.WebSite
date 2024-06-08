@@ -1,7 +1,5 @@
-import 'package:egorozh_cv/app_cubit.dart';
 import 'package:egorozh_cv/localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -77,9 +75,9 @@ class _DesktopAppBar extends StatelessWidget {
           onPressed: () => UrlHelper.open(myGithubUrl),
         ),
         const Spacer(),
-        const _ThemeSwitch(),
+        const ThemeSwitch(),
         const SizedBox(width: 20),
-        const _LangSelector(),
+        const LangSelector(),
         const SizedBox(width: 20),
       ],
     );
@@ -120,67 +118,6 @@ class _MobileNavBar extends StatelessWidget {
           _ => Routes.homeRoute,
         },
       ),
-    );
-  }
-}
-
-class _LangSelector extends StatelessWidget {
-  const _LangSelector();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
-      builder: (context, state) {
-        return DropdownButton<String>(
-          value: switch (state.locale.languageCode) {
-            "ru" => "Русский",
-            _ => "English",
-          },
-          onChanged: (String? value) {
-            final code = switch (value) {
-              "Русский" => "ru",
-              _ => "en",
-            };
-
-            context.read<AppCubit>().changeLanguage(code);
-          },
-          items: const [
-            DropdownMenuItem(
-              value: "English",
-              child: Text("English"),
-            ),
-            DropdownMenuItem(
-              value: "Русский",
-              child: Text("Русский"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _ThemeSwitch extends StatelessWidget {
-  const _ThemeSwitch();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
-      builder: (context, state) {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(context.appTexts.dark_theme_label),
-            const SizedBox(width: 8),
-            Switch(
-              value: state.themeMode == ThemeMode.dark,
-              onChanged: (isChecked) {
-                context.read<AppCubit>().changeTheme(isChecked ? ThemeMode.dark : ThemeMode.light);
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }
