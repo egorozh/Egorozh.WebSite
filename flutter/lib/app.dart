@@ -29,7 +29,7 @@ class EgorozhApp extends StatelessWidget {
               Locale('ru'),
             ],
             locale: state.locale,
-            title: "Желудков Егор",
+            title: state.locale.languageCode == "ru" ? "Желудков Егор" : "Zheludkov Egor",
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: state.themeMode,
