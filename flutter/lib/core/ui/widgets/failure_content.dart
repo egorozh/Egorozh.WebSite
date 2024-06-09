@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../localization.dart';
+
 class FailureContent extends StatelessWidget {
   const FailureContent({
     super.key,
@@ -12,10 +14,10 @@ class FailureContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text("Ошибка загрузки"),
+        Text(context.appTexts.load_error),
         FilledButton(
           onPressed: tryAgainAction,
-          child: const Text("Попробовать снова"),
+          child: Text(context.appTexts.try_again),
         ),
       ],
     );

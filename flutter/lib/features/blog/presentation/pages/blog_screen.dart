@@ -69,7 +69,7 @@ class _LoadedContent extends StatelessWidget {
           return ArticleTile(
             title: article.title,
             description: article.description,
-            onTap: () => context.go("${Routes.articleRoute}/${article.id.toString()}"),
+            onTap: () => context.push("${Routes.articleRoute}/${article.id.toString()}"),
             screenType: screenType,
           );
         },

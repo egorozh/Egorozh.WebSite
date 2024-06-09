@@ -19,6 +19,7 @@ class ArticleScreen extends StatelessWidget {
         listenWhen: (prev, next) => prev.locale != next.locale,
         listener: (context, state) => context.read<ArticleBloc>().add(ArticleEvent.load(locale: state.locale.languageCode)),
         child: Scaffold(
+          appBar: AppBar(),
           body: BlocBuilder<ArticleBloc, ArticleState>(
             builder: (context, state) => state.map(
               loading: (s) => const Center(child: CircularProgressIndicator()),
@@ -38,16 +39,10 @@ class _FailureContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        children: [
-          const Text("Ошибка загрузки"),
-          FilledButton(
-            onPressed: () {
-              context.read<ArticleBloc>().add(const ArticleEvent.load());
-            },
-            child: const Text("Попробовать снова"),
-          ),
-        ],
+      child: FailureContent(
+        tryAgainAction: () {
+          context.read<ArticleBloc>().add(const ArticleEvent.load());
+        },
       ),
     );
   }
@@ -61,7 +56,8 @@ class _LoadedContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Markdown(
-      selectable: true,
+      styleSheet: MarkdownStyleSheet(),
+      selectable: false,
       data: markdownData,
     );
   }

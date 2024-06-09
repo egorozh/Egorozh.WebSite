@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/ui/ui.dart';
+import '../../../../localization.dart';
 
 class ProjectTile extends StatelessWidget {
   const ProjectTile({
@@ -23,7 +24,7 @@ class ProjectTile extends StatelessWidget {
       description: description,
       onTap: onTap,
       screenType: screenType,
-      buttonText: "Перейти",
+      buttonText: context.appTexts.go,
     );
   }
 }

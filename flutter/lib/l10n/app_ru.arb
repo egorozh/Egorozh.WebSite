@@ -17,5 +17,9 @@
   "welcome_text_next_6": " Flutter",
   "welcome_text_next_7": ", на котором и сделан данный сайт-визитка",
   "welcome_text_next_8": ":)",
-  "dark_theme_label": "Тёмная тема:"
+  "dark_theme_label": "Тёмная тема:",
+  "load_error": "Ошибка загрузки",
+  "try_again": "Попробовать снова",
+  "read_more": "Читать далее",
+  "go": "Перейти"
 }

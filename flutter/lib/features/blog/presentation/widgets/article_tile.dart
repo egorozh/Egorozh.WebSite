@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../../localization.dart';
 
 class ArticleTile extends StatelessWidget {
   const ArticleTile({
@@ -23,7 +24,7 @@ class ArticleTile extends StatelessWidget {
       description: description,
       onTap: onTap,
       screenType: screenType,
-      buttonText: "Читать далее",
+      buttonText: context.appTexts.read_more,
     );
   }
 }
