@@ -53,6 +53,7 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/splash.png
     - assets/mock_data/
 
 flutter_native_splash:

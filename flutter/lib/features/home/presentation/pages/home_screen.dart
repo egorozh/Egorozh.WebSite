@@ -20,9 +20,9 @@ class HomeScreen extends StatelessWidget {
         final screenType = AdaptiveHelper.getScreenType(context);
 
         return Scaffold(
-          appBar: screenType == ScreenType.desktop ? AppBar(title: _DesktopAppBar(location)) : null,
+          appBar: screenType == ScreenType.desktop ? AppBar(title: _DesktopAppBar(location)) : AppBar(),
           body: child,
-          bottomNavigationBar: screenType != ScreenType.desktop ? _MobileNavBar(location) : null,
+          drawer: screenType != ScreenType.desktop ? _MobileDrawer(currentLocation: location) : null,
         );
       },
     );
@@ -119,5 +119,88 @@ class _MobileNavBar extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class _MobileDrawer extends StatelessWidget {
+  const _MobileDrawer({required this.currentLocation});
+
+  final String currentLocation;
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            DrawerHeader(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: CircleAvatar(child: ClipOval(child: Assets.splash.image(fit: BoxFit.fitHeight))),
+                  ),
+                  Text(context.appTexts.title, textAlign: TextAlign.center),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: currentLocation == Routes.homeRoute ? null : () => navigateAndCloseDrawer(context, Routes.homeRoute),
+              child: Text(context.appTexts.about),
+            ),
+            const SizedBox(height: 24),
+            TextButton(
+              onPressed: currentLocation == Routes.projectsRoute ? null : () => navigateAndCloseDrawer(context, Routes.projectsRoute),
+              child: Text(context.appTexts.projects),
+            ),
+            const SizedBox(height: 24),
+            TextButton(
+              onPressed: currentLocation == Routes.blogRoute ? null : () => navigateAndCloseDrawer(context, Routes.blogRoute),
+              child: Text(context.appTexts.blog),
+            ),
+            const SizedBox(height: 24),
+            TextButton(
+              onPressed: currentLocation == Routes.contactsRoute ? null : () => navigateAndCloseDrawer(context, Routes.contactsRoute),
+              child: Text(context.appTexts.contacts),
+            ),
+            const SizedBox(height: 24),
+            TextButton.icon(
+              label: Text(context.appTexts.youtube),
+              icon: SvgPicture.asset(
+                Assets.icons.youtube,
+                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
+            ),
+            const SizedBox(height: 24),
+            TextButton.icon(
+              label: Text(context.appTexts.github),
+              icon: SvgPicture.asset(
+                Assets.icons.github,
+                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+              ),
+              onPressed: () => UrlHelper.open(myGithubUrl),
+            ),
+            const Spacer(),
+            const ThemeSwitch(),
+            const SizedBox(height: 24),
+            const LangSwitch(),
+            const SizedBox(height: 24),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void navigateAndCloseDrawer(BuildContext context, String route) {
+    context.go(route);
+
+    Navigator.pop(context);
   }
 }
