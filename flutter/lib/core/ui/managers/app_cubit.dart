@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core.dart';
 
 part 'app_cubit.freezed.dart';
 part 'app_state.dart';
 
 @Singleton()
 class AppCubit extends Cubit<AppState> {
-  static const _darkThemeKey = "DarkThemeKey";
-  static const _localeKey = "LocaleKey";
+  final AppStorage _appStorage;
+
+  AppCubit(this._appStorage) : super(const AppState(themeMode: ThemeMode.dark, locale: englishLocale));
 
   static const englishLocale = Locale('en');
   static const russianLocale = Locale('ru');
@@ -20,20 +22,11 @@ class AppCubit extends Cubit<AppState> {
     russianLocale,
   ];
 
-  late final SharedPreferences _prefs;
-
-  AppCubit() : super(const AppState(themeMode: ThemeMode.dark, locale: englishLocale));
-
   void init() async {
-    _prefs = await SharedPreferences.getInstance();
-
-    final isDarkMode = _prefs.getBool(_darkThemeKey) ?? true;
-    final locale = _prefs.getString(_localeKey) ?? "en";
-
     emit(
       AppState(
-        themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        locale: locale == "en" ? englishLocale : russianLocale,
+        themeMode: _appStorage.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        locale: _appStorage.locale == englishLocale.languageCode ? englishLocale : russianLocale,
       ),
     );
   }
@@ -41,12 +34,12 @@ class AppCubit extends Cubit<AppState> {
   void changeTheme(ThemeMode mode) {
     emit(state.copyWith(themeMode: mode));
 
-    _prefs.setBool(_darkThemeKey, mode == ThemeMode.dark);
+    _appStorage.isDarkMode = mode == ThemeMode.dark;
   }
 
   void changeLanguage(Locale locale) {
     emit(state.copyWith(locale: locale));
 
-    _prefs.setString(_localeKey, locale.languageCode);
+    _appStorage.locale = locale.languageCode;
   }
 }
