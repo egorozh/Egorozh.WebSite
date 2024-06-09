@@ -21,5 +21,6 @@
   "load_error": "Ошибка загрузки",
   "try_again": "Попробовать снова",
   "read_more": "Читать далее",
-  "go": "Перейти"
+  "go": "Перейти",
+  "powered_by": "Powered by Flutter (3.22.1)"
 }

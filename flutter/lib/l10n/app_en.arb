@@ -21,5 +21,6 @@
   "load_error": "Loading failure",
   "try_again": "Try again",
   "read_more": "Read more",
-  "go": "Go"
+  "go": "Go",
+  "powered_by": "Powered by Flutter (3.22.1)"
 }
