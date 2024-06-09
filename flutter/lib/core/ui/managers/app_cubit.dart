@@ -9,18 +9,20 @@ part 'app_state.dart';
 
 @Singleton()
 class AppCubit extends Cubit<AppState> {
+  static const _darkThemeKey = "DarkThemeKey";
+  static const _localeKey = "LocaleKey";
+
+  static const englishLocale = Locale('en');
+  static const russianLocale = Locale('ru');
+
+  static const supportedLocales = [
+    englishLocale,
+    russianLocale,
+  ];
+
   late final SharedPreferences _prefs;
 
-  final String _darkThemeKey = "DarkThemeKey";
-  final String _localeKey = "LocaleKey";
-
-  AppCubit()
-      : super(
-          const AppState(
-            themeMode: ThemeMode.dark,
-            locale: Locale('en'),
-          ),
-        );
+  AppCubit() : super(const AppState(themeMode: ThemeMode.dark, locale: englishLocale));
 
   void init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -31,7 +33,7 @@ class AppCubit extends Cubit<AppState> {
     emit(
       AppState(
         themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-        locale: Locale(locale),
+        locale: locale == "en" ? englishLocale : russianLocale,
       ),
     );
   }
@@ -42,9 +44,9 @@ class AppCubit extends Cubit<AppState> {
     _prefs.setBool(_darkThemeKey, mode == ThemeMode.dark);
   }
 
-  void changeLanguage(String locale) {
-    emit(state.copyWith(locale: Locale(locale)));
+  void changeLanguage(Locale locale) {
+    emit(state.copyWith(locale: locale));
 
-    _prefs.setString(_localeKey, locale);
+    _prefs.setString(_localeKey, locale.languageCode);
   }
 }

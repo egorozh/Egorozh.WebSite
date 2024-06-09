@@ -21,11 +21,11 @@ class LangSwitch extends StatelessWidget {
           activeColor: darkColor,
           activeThumbImage: Assets.icons.uk.provider(),
           inactiveThumbImage: Assets.icons.russia.provider(),
-          value: state.locale.languageCode == "en",
+          value: state.locale == AppCubit.englishLocale,
           onChanged: (isChecked) {
-            final code = isChecked ? "en" : "ru";
+            final locale = isChecked ? AppCubit.englishLocale : AppCubit.russianLocale;
 
-            context.read<AppCubit>().changeLanguage(code);
+            context.read<AppCubit>().changeLanguage(locale);
           },
         );
       },

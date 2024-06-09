@@ -1,4 +1,3 @@
-import 'package:egorozh_cv/locator/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/ui/managers/app_cubit.dart';
 import 'core/ui/theme/themes.dart';
+import 'locator/locator.dart';
 import 'router/router.dart';
 
 class EgorozhApp extends StatelessWidget {
@@ -24,12 +24,9 @@ class EgorozhApp extends StatelessWidget {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: const [
-              Locale('en'),
-              Locale('ru'),
-            ],
+            supportedLocales: AppCubit.supportedLocales,
             locale: state.locale,
-            title: state.locale.languageCode == "ru" ? "Желудков Егор" : "Zheludkov Egor",
+            title: state.title,
             theme: lightTheme,
             darkTheme: darkTheme,
             themeMode: state.themeMode,
