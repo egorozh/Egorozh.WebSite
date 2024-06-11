@@ -22,5 +22,5 @@
   "try_again": "Try again",
   "read_more": "Read more",
   "go": "Go",
-  "powered_by": "Powered by Flutter (3.22.1)"
+  "powered_by": "Powered by Flutter ({version})"
 }

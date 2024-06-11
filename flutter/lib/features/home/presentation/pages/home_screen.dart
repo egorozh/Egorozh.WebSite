@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../../localization.dart';
 import '../../../../router/router.dart';
+import '../models/models.dart';
+import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, required this.child, required this.location});
@@ -15,6 +15,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final navItems = [
+      PageInfo(text: context.appTexts.about, route: Routes.homeRoute),
+      PageInfo(text: context.appTexts.projects, route: Routes.projectsRoute),
+      PageInfo(text: context.appTexts.blog, route: Routes.blogRoute),
+      PageInfo(text: context.appTexts.contacts, route: Routes.contactsRoute),
+      ExternalUrlInfo(text: context.appTexts.youtube, assetName: Assets.icons.youtube, url: myYoutubeChannelUrl),
+      ExternalUrlInfo(text: context.appTexts.github, assetName: Assets.icons.github, url: myGithubUrl),
+    ];
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final screenType = AdaptiveHelper.getScreenType(context);
@@ -22,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           appBar: screenType == ScreenType.desktop
               ? AppBar(
-                  title: _DesktopAppBar(location),
+                  title: _DesktopAppBar(location, navItems),
                   leadingWidth: 24.0 + 48,
                   leading: Padding(
                     padding: const EdgeInsets.only(left: 24.0, right: 8.0),
@@ -31,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                 )
               : AppBar(),
           body: child,
-          drawer: screenType != ScreenType.desktop ? _MobileDrawer(currentLocation: location) : null,
+          drawer: screenType != ScreenType.desktop ? _MobileDrawer(currentLocation: location, items: navItems) : null,
           bottomSheet: screenType == ScreenType.desktop ? const Padding(padding: EdgeInsets.all(8.0), child: _PoweredBy()) : null,
         );
       },
@@ -40,50 +49,19 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _DesktopAppBar extends StatelessWidget {
-  const _DesktopAppBar(this.currentLocation);
+  const _DesktopAppBar(this.currentLocation, this.navItems);
 
   final String currentLocation;
+  final List<NavigationInfo> navItems;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        TextButton(
-          onPressed: currentLocation == Routes.homeRoute ? null : () => context.go(Routes.homeRoute),
-          child: Text(context.appTexts.about),
-        ),
-        TextButton(
-          onPressed: currentLocation == Routes.projectsRoute ? null : () => context.go(Routes.projectsRoute),
-          child: Text(context.appTexts.projects),
-        ),
-        TextButton(
-          onPressed: currentLocation == Routes.blogRoute ? null : () => context.go(Routes.blogRoute),
-          child: Text(context.appTexts.blog),
-        ),
-        TextButton(
-          onPressed: currentLocation == Routes.contactsRoute ? null : () => context.go(Routes.contactsRoute),
-          child: Text(context.appTexts.contacts),
-        ),
-        TextButton.icon(
-          label: Text(context.appTexts.youtube),
-          icon: SvgPicture.asset(
-            Assets.icons.youtube,
-            colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-            width: 24,
-            height: 24,
-          ),
-          onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
-        ),
-        TextButton.icon(
-          label: Text(context.appTexts.github),
-          icon: SvgPicture.asset(
-            Assets.icons.github,
-            colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-            width: 24,
-            height: 24,
-          ),
-          onPressed: () => UrlHelper.open(myGithubUrl),
-        ),
+        for (final item in navItems) ...[
+          NavigationItem(info: item, currentLocation: currentLocation, forDrawer: false),
+          const SizedBox(width: 12),
+        ],
         const Spacer(),
         const ThemeSwitch(),
         const SizedBox(width: 20),
@@ -95,20 +73,20 @@ class _DesktopAppBar extends StatelessWidget {
 }
 
 class _MobileDrawer extends StatelessWidget {
-  const _MobileDrawer({required this.currentLocation});
+  const _MobileDrawer({required this.currentLocation, required this.items});
 
   final String currentLocation;
+  final List<NavigationInfo> items;
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              DrawerHeader(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: DrawerHeader(
                 padding: const EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 8.0),
                 child: Stack(
                   children: [
@@ -126,60 +104,18 @@ class _MobileDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              TextButton(
-                onPressed: currentLocation == Routes.homeRoute ? null : () => navigateAndCloseDrawer(context, Routes.homeRoute),
-                child: Text(context.appTexts.about),
-              ),
-              const SizedBox(height: 24),
-              TextButton(
-                onPressed: currentLocation == Routes.projectsRoute ? null : () => navigateAndCloseDrawer(context, Routes.projectsRoute),
-                child: Text(context.appTexts.projects),
-              ),
-              const SizedBox(height: 24),
-              TextButton(
-                onPressed: currentLocation == Routes.blogRoute ? null : () => navigateAndCloseDrawer(context, Routes.blogRoute),
-                child: Text(context.appTexts.blog),
-              ),
-              const SizedBox(height: 24),
-              TextButton(
-                onPressed: currentLocation == Routes.contactsRoute ? null : () => navigateAndCloseDrawer(context, Routes.contactsRoute),
-                child: Text(context.appTexts.contacts),
-              ),
-              const SizedBox(height: 24),
-              TextButton.icon(
-                label: Text(context.appTexts.youtube),
-                icon: SvgPicture.asset(
-                  Assets.icons.youtube,
-                  colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-                  width: 24,
-                  height: 24,
-                ),
-                onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
-              ),
-              const SizedBox(height: 24),
-              TextButton.icon(
-                label: Text(context.appTexts.github),
-                icon: SvgPicture.asset(
-                  Assets.icons.github,
-                  colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-                  width: 24,
-                  height: 24,
-                ),
-                onPressed: () => UrlHelper.open(myGithubUrl),
-              ),
-              const SizedBox(height: 48),
-              const _PoweredBy(),
-            ],
-          ),
+            ),
+            SliverList.separated(
+              itemBuilder: (context, index) => NavigationItem(info: items[index], currentLocation: currentLocation, forDrawer: true),
+              separatorBuilder: (context, index) => const SizedBox(height: 24),
+              itemCount: items.length,
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 48)),
+            const SliverToBoxAdapter(child: _PoweredBy()),
+          ],
         ),
       ),
     );
-  }
-
-  void navigateAndCloseDrawer(BuildContext context, String route) {
-    context.go(route);
-
-    Navigator.pop(context);
   }
 }
 
@@ -189,7 +125,7 @@ class _PoweredBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.appTexts.powered_by,
+      context.appTexts.powered_by("3.22.2"),
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.labelMedium,
     );
