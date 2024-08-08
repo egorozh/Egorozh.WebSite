@@ -1,0 +1,35 @@
+{
+  "title": "Egor Zheludkov",
+  "contacts": "Contacts",
+  "youtube": "youtube",
+  "github": "github",
+  "core": {
+    "failure_content": {
+      "try_again": "Try again",
+      "load_error": "Load error"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "welcome_text(rich)": "Hello everyone! My name is {accent(Egor!)}\n\nI am a developer of mobile and desktop applications. My career path began in 2018. I started with developing a vector editor on {accent(WPF)}, intended for modeling security systems.\n\nThen I developed a large mobile application on {accent(Xamarin Native)}. Since the end of 2023, I switched to developing a mobile application on {accent(Flutter)}, which is used for this portfolio website {accent(:))}"
+  },
+  "blog": {
+    "title": "Blog",
+    "blog_screen": {
+      "article_tile": {
+        "read_more": "Read more"
+      }
+    }
+  },
+  "home": {
+    "powered_by": "Powered by Flutter ({version:String})"
+  },
+  "my_projects": {
+    "title": "My Projects",
+    "projects_screen": {
+      "project_tile": {
+        "go": "Go"
+      }
+    }
+  }
+}

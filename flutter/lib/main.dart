@@ -6,12 +6,19 @@ import 'app.dart';
 import 'core/core.dart';
 import 'features/features.dart';
 import 'firebase_options.dart';
+import 'i18n/translations.g.dart';
 import 'locator/locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  locator.registerSingleton(AppStorage(await SharedPreferences.getInstance()));
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  final localizationRepository = LocalizationRepository(sharedPreferences);
+  await localizationRepository.init();
+
+  locator.registerSingleton<ILocalizationRepository>(localizationRepository);
+  locator.registerSingleton(AppStorage(sharedPreferences));
 
   configureDependencies();
 
@@ -22,5 +29,7 @@ void main() async {
 
   final _ = await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const EgorozhApp());
+  LocaleSettings.useDeviceLocale();
+
+  runApp(TranslationProvider(child: const EgorozhApp()));
 }

@@ -24,7 +24,7 @@ class ProjectTile extends StatelessWidget {
       description: description,
       onTap: onTap,
       screenType: screenType,
-      buttonText: context.appTexts.go,
+      buttonText: context.appTexts.my_projects.projects_screen.project_tile.go,
     );
   }
 }

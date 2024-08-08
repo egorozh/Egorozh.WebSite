@@ -1,6 +1,7 @@
+import 'package:egorozh_cv/features/features.dart';
+import 'package:egorozh_cv/i18n/translations.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/ui/managers/app_cubit.dart';
@@ -13,24 +14,30 @@ class EgorozhApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => locator<AppCubit>()..init(),
-      child: BlocBuilder<AppCubit, AppState>(
-        builder: (context, state) {
-          return MaterialApp.router(
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppCubit.supportedLocales,
-            locale: state.locale,
-            title: state.title,
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: state.themeMode,
-            routerConfig: router,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => locator<AppCubit>()..init()),
+        BlocProvider(create: (_) => locator<LangCubit>(param1: context)),
+      ],
+      child: BlocBuilder<LangCubit, LangState>(
+        builder: (context, langState) {
+          return BlocBuilder<AppCubit, AppState>(
+            builder: (context, state) {
+              return MaterialApp.router(
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: AppLocaleUtils.supportedLocales,
+                locale: TranslationProvider.of(context).flutterLocale,
+                title: langState.selectedLocale?.appTitle ?? "Zheludkov Egor",
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: state.themeMode,
+                routerConfig: router,
+              );
+            },
           );
         },
       ),

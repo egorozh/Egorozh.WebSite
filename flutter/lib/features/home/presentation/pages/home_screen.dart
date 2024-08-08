@@ -16,9 +16,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final navItems = [
-      PageInfo(text: context.appTexts.about, route: Routes.homeRoute),
-      PageInfo(text: context.appTexts.projects, route: Routes.projectsRoute),
-      PageInfo(text: context.appTexts.blog, route: Routes.blogRoute),
+      PageInfo(text: context.appTexts.about.title, route: Routes.homeRoute),
+      PageInfo(text: context.appTexts.my_projects.title, route: Routes.projectsRoute),
+      PageInfo(text: context.appTexts.blog.title, route: Routes.blogRoute),
       PageInfo(text: context.appTexts.contacts, route: Routes.contactsRoute),
       ExternalUrlInfo(text: context.appTexts.youtube, assetName: Assets.icons.youtube, url: myYoutubeChannelUrl),
       ExternalUrlInfo(text: context.appTexts.github, assetName: Assets.icons.github, url: myGithubUrl),
@@ -125,7 +125,7 @@ class _PoweredBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      context.appTexts.powered_by("3.22.2"),
+      context.appTexts.home.powered_by(version: "3.24.0"),
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.labelMedium,
     );

@@ -24,7 +24,7 @@ class ArticleTile extends StatelessWidget {
       description: description,
       onTap: onTap,
       screenType: screenType,
-      buttonText: context.appTexts.read_more,
+      buttonText: context.appTexts.blog.blog_screen.article_tile.read_more,
     );
   }
 }

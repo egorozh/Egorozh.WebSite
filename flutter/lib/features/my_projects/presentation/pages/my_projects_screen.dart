@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/features/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +15,9 @@ class MyProjectsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<MyProjectsBloc>()..add(MyProjectsEvent.started(context)),
-      child: BlocListener<AppCubit, AppState>(
-        listenWhen: (prev, next) => prev.locale != next.locale,
-        listener: (context, state) => context.read<MyProjectsBloc>().add(MyProjectsEvent.load(locale: state.locale.languageCode)),
+      child: BlocListener<LangCubit, LangState>(
+        listenWhen: (prev, next) => prev.selectedLocale != next.selectedLocale,
+        listener: (context, state) => context.read<MyProjectsBloc>().add(MyProjectsEvent.load(locale: state.selectedLocale?.code)),
         child: BlocBuilder<MyProjectsBloc, MyProjectsState>(
           builder: (context, state) {
             return state.map(

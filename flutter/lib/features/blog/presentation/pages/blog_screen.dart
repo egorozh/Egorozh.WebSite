@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/features/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,9 +17,9 @@ class BlogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<BlogBloc>()..add(BlogEvent.started(context)),
-      child: BlocListener<AppCubit, AppState>(
-        listenWhen: (prev, next) => prev.locale != next.locale,
-        listener: (context, state) => context.read<BlogBloc>().add(BlogEvent.load(locale: state.locale.languageCode)),
+      child: BlocListener<LangCubit, LangState>(
+        listenWhen: (prev, next) => prev.selectedLocale != next.selectedLocale,
+        listener: (context, state) => context.read<BlogBloc>().add(BlogEvent.load(locale: state.selectedLocale?.code)),
         child: BlocBuilder<BlogBloc, BlogState>(
           builder: (context, state) => state.map(
             loading: (s) => const Center(child: CircularProgressIndicator()),

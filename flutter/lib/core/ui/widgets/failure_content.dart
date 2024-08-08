@@ -14,10 +14,10 @@ class FailureContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(context.appTexts.load_error),
+        Text(context.appTexts.core.failure_content.load_error),
         FilledButton(
           onPressed: tryAgainAction,
-          child: Text(context.appTexts.try_again),
+          child: Text(context.appTexts.core.failure_content.try_again),
         ),
       ],
     );

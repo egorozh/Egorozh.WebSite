@@ -1,3 +1,4 @@
+import 'package:egorozh_cv/features/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -15,9 +16,9 @@ class ArticleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => locator<ArticleBloc>()..add(ArticleEvent.started(context, id)),
-      child: BlocListener<AppCubit, AppState>(
-        listenWhen: (prev, next) => prev.locale != next.locale,
-        listener: (context, state) => context.read<ArticleBloc>().add(ArticleEvent.load(locale: state.locale.languageCode)),
+      child: BlocListener<LangCubit, LangState>(
+        listenWhen: (prev, next) => prev.selectedLocale != next.selectedLocale,
+        listener: (context, state) => context.read<ArticleBloc>().add(ArticleEvent.load(locale: state.selectedLocale?.code)),
         child: Scaffold(
           appBar: AppBar(),
           body: BlocBuilder<ArticleBloc, ArticleState>(

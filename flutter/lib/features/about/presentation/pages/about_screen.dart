@@ -43,23 +43,9 @@ class _WelcomeText extends StatelessWidget {
     return Column(
       children: [
         Text.rich(
-          textAlign: TextAlign.start,
-          TextSpan(
-            children: [
-              TextSpan(text: context.appTexts.welcome_text1, style: style),
-              TextSpan(text: context.appTexts.welcome_text2, style: primaryStyle),
-              TextSpan(text: "\n\n", style: style),
-              TextSpan(text: context.appTexts.welcome_text_next_1, style: style),
-              TextSpan(text: context.appTexts.welcome_text_next_2, style: primaryStyle),
-              TextSpan(text: context.appTexts.welcome_text_next_3, style: style),
-              TextSpan(text: context.appTexts.welcome_text_next_4, style: primaryStyle),
-              TextSpan(text: context.appTexts.welcome_text_next_5, style: style),
-              TextSpan(text: context.appTexts.welcome_text_next_6, style: primaryStyle),
-              TextSpan(text: context.appTexts.welcome_text_next_7, style: style),
-              TextSpan(text: context.appTexts.welcome_text_next_8, style: primaryStyle),
-            ],
-          ),
-        ),
+          context.appTexts.about.welcome_text(accent: (text) => TextSpan(text: text, style: primaryStyle)),
+          style: style,
+        )
       ],
     );
   }
