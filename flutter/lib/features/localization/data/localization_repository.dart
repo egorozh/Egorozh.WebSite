@@ -13,9 +13,13 @@ class LocalizationRepository implements ILocalizationRepository {
   LocalizationRepository(this._prefs);
 
   Future<void> init() async {
-    final locale = _prefs.getString(_localeKey);
+    final localeCode = _prefs.getString(_localeKey);
 
-    if (locale != null) LocaleSettings.setLocale(AppLocaleUtils.parse(locale));
+    if (localeCode != null) {
+      final locale = AppLocaleUtils.parse(localeCode);
+
+      LocaleSettings.setLocale(locale);
+    }
   }
 
   @override
