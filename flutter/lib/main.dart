@@ -28,8 +28,6 @@ void main() async {
   //setUrlStrategy(PathUrlStrategy());
 
   final _ = await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  LocaleSettings.useDeviceLocale();
-
+  
   runApp(TranslationProvider(child: const EgorozhApp()));
 }
