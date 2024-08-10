@@ -1,11 +1,9 @@
-import 'package:egorozh_cv/features/localization/localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
 import '../../../../locator/locator.dart';
-import '../../../../router/router.dart';
+import '../../../localization/localization.dart';
 import '../../domain/domain.dart';
 import '../manager/blog_bloc.dart';
 import '../widgets/widgets.dart';
@@ -16,7 +14,7 @@ class BlogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => locator<BlogBloc>()..add(BlogEvent.started(context)),
+      create: (_) => locator<BlogBloc>(param1: context)..add(const BlogEvent.started()),
       child: BlocListener<LangCubit, LangState>(
         listenWhen: (prev, next) => prev.selectedLocale != next.selectedLocale,
         listener: (context, state) => context.read<BlogBloc>().add(BlogEvent.load(locale: state.selectedLocale?.code)),
@@ -70,7 +68,7 @@ class _LoadedContent extends StatelessWidget {
           return ArticleTile(
             title: article.title,
             description: article.description,
-            onTap: () => context.push("${Routes.articleRoute}/${article.id.toString()}"),
+            onTap: () => context.read<BlogBloc>().add(BlogEvent.goToArticle(article: article)),
             screenType: screenType,
           );
         },

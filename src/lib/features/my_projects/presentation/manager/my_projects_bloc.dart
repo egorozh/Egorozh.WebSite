@@ -13,26 +13,22 @@ part 'my_projects_event.dart';
 part 'my_projects_state.dart';
 
 @injectable
-class MyProjectsBloc extends Bloc<MyProjectsEvent, MyProjectsState> {
+class MyProjectsBloc extends ContextBloc<MyProjectsEvent, MyProjectsState> {
   final GetProjects _getProjects;
 
-  late final BuildContext _context;
-
-  MyProjectsBloc(this._getProjects) : super(const MyProjectsState.loading()) {
+  MyProjectsBloc(this._getProjects, @factoryParam BuildContext context) : super(const MyProjectsState.loading(), context) {
     on<_Started>(_onStarted);
     on<_Load>(_onLoad);
   }
 
   void _onStarted(_Started event, Emitter<MyProjectsState> emit) {
-    _context = event.context;
-
     add(const MyProjectsEvent.load());
   }
 
   Future<void> _onLoad(_Load event, Emitter<MyProjectsState> emit) async {
     emit(const MyProjectsState.loading());
 
-    final locale = event.locale ?? Localizations.localeOf(_context).languageCode;
+    final locale = event.locale ?? Localizations.localeOf(context).languageCode;
 
     final result = await _getProjects(locale);
 

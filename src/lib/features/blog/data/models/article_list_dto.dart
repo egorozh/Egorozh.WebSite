@@ -7,9 +7,10 @@ part 'article_list_dto.g.dart';
 
 @JsonSerializable()
 class ArticleListDto {
-  ArticleListDto(this.id, this.title, this.description);
+  ArticleListDto(this.id, this.title, this.description, this.url);
 
   final int id;
+  final String? url;
   final String title;
   final String description;
 
@@ -18,6 +19,7 @@ class ArticleListDto {
   ArticleListInfo toDomain() {
     return ArticleListInfo(
       title: title,
+      url: url,
       description: description,
       id: DomainId.intId(id: id),
     );

@@ -8,6 +8,7 @@ part 'article_list_info.freezed.dart';
 class ArticleListInfo with _$ArticleListInfo {
   const factory ArticleListInfo({
     required DomainId id,
+    required String? url,
     required String title,
     required String description,
   }) = _ArticleListInfo;

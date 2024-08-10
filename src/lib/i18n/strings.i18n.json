@@ -31,5 +31,38 @@
         "go": "Перейти"
       }
     }
+  },
+  "my_articles_mock": {
+    "id": 1,
+    "url": "https://habr.com/ru/articles/796147/",
+    "title": "Первый взгляд на переход с Xamarin Native на Flutter",
+    "description": "В этой статье хочу поделиться своим опытом перехода с Xamarin Native на Flutter. Постараюсь сравнить два фреймворка с точки зрения личного опыта, расскажу о своих старых заблуждениях касательно декларативных фреймворков, которые развенчал опыт работы с Flutter, а в конце статьи порассуждаю о своем идеальном мобильном фреймворке мечты."
+  },
+  "my_projects_mock": {
+    "project1": {
+      "title": "Сайт-визитка",
+      "description": "Сайт-визитка на flutter-web",
+      "url": "https://github.com/egorozh/Egorozh.WebSite"
+    },
+    "project2": {
+      "title": "Tabalonia",
+      "description": "Библиотека для создания вкладочного интерфейса как в браузерах",
+      "url": "https://github.com/egorozh/Tabalonia"
+    },
+    "project3": {
+      "title": "X-Filer",
+      "description": "Проводник файлов с вкладочным интерфейсом, похожий на Google Chrome",
+      "url": "https://github.com/egorozh/X-Filer"
+    },
+    "project4": {
+      "title": "X-Filer Plus",
+      "description": "Кроссплатформенный проводник файлов с вкладочным интерфейсом, похожий на Google Chrome для Windows и MacOS",
+      "url": "https://x-filer.com"
+    },
+    "project5": {
+      "title": "Egorozh.ColorPicker",
+      "description": "ColorPicker для AvaloniaUI и WPF",
+      "url": "https://github.com/egorozh/Egorozh.ColorPicker"
+    }
   }
 }

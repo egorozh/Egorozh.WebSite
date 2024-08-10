@@ -31,5 +31,38 @@
         "go": "Go"
       }
     }
+  },
+  "my_articles_mock": {
+    "id": 1,
+    "url": "https://habr.com/ru/articles/796147/",
+    "title": "A First Look at Transitioning from Xamarin Native to Flutter",
+    "description": "In this article, I want to share my experience of transitioning from Xamarin Native to Flutter. I will compare the two frameworks based on my personal experience, discuss my previous misconceptions about declarative frameworks that were dispelled through working with Flutter, and finally, I will reflect on my ideal dream mobile framework."
+  },
+  "my_projects_mock": {
+    "project1": {
+      "title": "Landing Page",
+      "description": "Landing page built with flutter-web",
+      "url": "https://github.com/egorozh/Egorozh.WebSite"
+    },
+    "project2": {
+      "title": "Tabalonia",
+      "description": "A library for creating tabbed interfaces like those in browsers",
+      "url": "https://github.com/egorozh/Tabalonia"
+    },
+    "project3": {
+      "title": "X-Filer",
+      "description": "File manager with a tabbed interface, similar to Google Chrome",
+      "url": "https://github.com/egorozh/X-Filer"
+    },
+    "project4": {
+      "title": "X-Filer Plus",
+      "description": "Cross-platform file manager with a tabbed interface, similar to Google Chrome for Windows and MacOS",
+      "url": "https://x-filer.com"
+    },
+    "project5": {
+      "title": "Egorozh.ColorPicker",
+      "description": "ColorPicker for AvaloniaUI and WPF",
+      "url": "https://github.com/egorozh/Egorozh.ColorPicker"
+    }
   }
 }

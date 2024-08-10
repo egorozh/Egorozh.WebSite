@@ -6,7 +6,11 @@ import '../models/models.dart';
 
 class ProjectsApi {
   Future<List<ProjectListDto>> getProjects(String locale) async {
-    final fileName = locale == "ru" ? "my_projects_ru.json" : "my_projects.json";
+    final fileName = switch (locale) {
+      "ru" => "my_projects_ru.i18n.json",
+      "en" => "my_projects_en.i18n.json",
+      _ => "my_projects_ru.i18n.json",
+    };
 
     final json = await rootBundle.loadString('assets/mock_data/$fileName');
 

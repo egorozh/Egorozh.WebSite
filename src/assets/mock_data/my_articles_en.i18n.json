@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "url": "https://habr.com/ru/articles/796147/",
+    "title": "A First Look at Transitioning from Xamarin Native to Flutter",
+    "description": "In this article, I want to share my experience of transitioning from Xamarin Native to Flutter. I will compare the two frameworks based on my personal experience, discuss my previous misconceptions about declarative frameworks that were dispelled through working with Flutter, and finally, I will reflect on my ideal dream mobile framework."
+  }
+]

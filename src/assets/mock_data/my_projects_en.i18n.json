@@ -1,22 +1,22 @@
 [
   {
-    "title": "Site-card",
-    "description": "Site-card on flutter-web",
+    "title": "Landing Page",
+    "description": "Landing page built with flutter-web",
     "url": "https://github.com/egorozh/Egorozh.WebSite"
   },
   {
     "title": "Tabalonia",
-    "description": "Library for create dragging tabs like browsers",
+    "description": "A library for creating tabbed interfaces like those in browsers",
     "url": "https://github.com/egorozh/Tabalonia"
   },
   {
     "title": "X-Filer",
-    "description": "File explorer with dragging tabs like Google Chrome",
+    "description": "File manager with a tabbed interface, similar to Google Chrome",
     "url": "https://github.com/egorozh/X-Filer"
   },
   {
     "title": "X-Filer Plus",
-    "description": "Cross-platform File explorer with dragging tabs like Google Chrome for MacOs and Windows",
+    "description": "Cross-platform file manager with a tabbed interface, similar to Google Chrome for Windows and MacOS",
     "url": "https://x-filer.com"
   },
   {

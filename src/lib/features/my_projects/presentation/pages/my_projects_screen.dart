@@ -14,7 +14,7 @@ class MyProjectsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => locator<MyProjectsBloc>()..add(MyProjectsEvent.started(context)),
+      create: (_) => locator<MyProjectsBloc>(param1: context)..add(const MyProjectsEvent.started()),
       child: BlocListener<LangCubit, LangState>(
         listenWhen: (prev, next) => prev.selectedLocale != next.selectedLocale,
         listener: (context, state) => context.read<MyProjectsBloc>().add(MyProjectsEvent.load(locale: state.selectedLocale?.code)),
