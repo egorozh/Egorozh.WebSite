@@ -19,9 +19,9 @@ class HomeScreen extends StatelessWidget {
       PageInfo(text: context.appTexts.about.title, route: Routes.homeRoute),
       PageInfo(text: context.appTexts.my_projects.title, route: Routes.projectsRoute),
       PageInfo(text: context.appTexts.blog.title, route: Routes.blogRoute),
-      PageInfo(text: context.appTexts.contacts, route: Routes.contactsRoute),
-      ExternalUrlInfo(text: context.appTexts.youtube, assetName: Assets.icons.youtube, url: myYoutubeChannelUrl),
-      ExternalUrlInfo(text: context.appTexts.github, assetName: Assets.icons.github, url: myGithubUrl),
+      PageInfo(text: context.appTexts.contacts.title, route: Routes.contactsRoute),
+      ExternalUrlInfo(text: context.appTexts.contacts.youtube, assetName: Assets.icons.youtube, url: myYoutubeChannelUrl),
+      ExternalUrlInfo(text: context.appTexts.contacts.github, assetName: Assets.icons.github, url: myGithubUrl),
     ];
 
     return LayoutBuilder(

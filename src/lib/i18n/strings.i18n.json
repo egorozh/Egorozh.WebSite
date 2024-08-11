@@ -1,8 +1,5 @@
 {
   "title": "Желудков Егор",
-  "contacts": "Контакты",
-  "youtube": "youtube",
-  "github": "github",
   "core": {
     "failure_content": {
       "try_again": "Попробовать снова",
@@ -20,6 +17,12 @@
         "read_more": "Читать далее"
       }
     }
+  },
+  "contacts": {
+    "title": "Контакты",
+    "youtube": "youtube",
+    "github": "github",
+    "linkedin": "linkedin"
   },
   "home": {
     "powered_by": "Powered by Flutter ({version:String})"

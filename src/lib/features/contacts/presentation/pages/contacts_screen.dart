@@ -10,47 +10,67 @@ class ContactsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // TextButton(
-            //   onPressed: () => UrlHelper.open("tel:79818852110"),
-            //   child: const Text("+7-981-885-21-10"),
-            // ),
-            const SizedBox(height: 12),
-            TextButton(
-              onPressed: () => UrlHelper.open('mailto:$myEmail'),
-              child: const Text(myEmail),
-            ),
-            const SizedBox(height: 12),
-            TextButton.icon(
-              label: Text(context.appTexts.youtube),
-              icon: SvgPicture.asset(
-                Assets.icons.youtube,
-                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () => UrlHelper.open(myYoutubeChannelUrl),
-            ),
-            const SizedBox(height: 12),
-            TextButton.icon(
-              label: Text(context.appTexts.github),
-              icon: SvgPicture.asset(
-                Assets.icons.github,
-                colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () => UrlHelper.open(myGithubUrl),
-            ),
-          ],
-        ),
+    final iconButtonInfos = [
+      (
+        title: myEmail,
+        iconPath: null,
+        icon: Icons.alternate_email,
+        onPressed: () => UrlHelper.open('mailto:$myEmail'),
       ),
+      (
+        title: context.appTexts.contacts.linkedin,
+        iconPath: Assets.icons.linkedin,
+        icon: null,
+        onPressed: () => UrlHelper.open(myLinkedinUrl),
+      ),
+      (
+        title: context.appTexts.contacts.youtube,
+        iconPath: Assets.icons.youtube,
+        icon: null,
+        onPressed: () => UrlHelper.open(myYoutubeChannelUrl)
+      ),
+      (
+        title: context.appTexts.contacts.github,
+        iconPath: Assets.icons.github,
+        icon: null,
+        onPressed: () => UrlHelper.open(myGithubUrl),
+      ),
+    ];
+
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(iconButtonInfos.length * 2, (index) {
+          if (index.isEven) return const SizedBox(height: 12);
+
+          final iconButtonInfo = iconButtonInfos[index ~/ 2];
+
+          return TextButton.icon(
+            onPressed: iconButtonInfo.onPressed,
+            label: Text(iconButtonInfo.title),
+            icon: iconButtonInfo.icon == null
+                ? _Icon(iconButtonInfo.iconPath!)
+                : Icon(iconButtonInfo.icon!, color: Theme.of(context).colorScheme.secondary),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+class _Icon extends StatelessWidget {
+  const _Icon(this.assetPath);
+
+  final String assetPath;
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      assetPath,
+      colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.secondary, BlendMode.srcIn),
+      width: 24,
+      height: 24,
     );
   }
 }

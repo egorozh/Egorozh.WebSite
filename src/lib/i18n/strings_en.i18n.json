@@ -1,8 +1,5 @@
 {
   "title": "Egor Zheludkov",
-  "contacts": "Contacts",
-  "youtube": "youtube",
-  "github": "github",
   "core": {
     "failure_content": {
       "try_again": "Try again",
@@ -20,6 +17,12 @@
         "read_more": "Read more"
       }
     }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "youtube": "youtube",
+    "github": "github",
+    "linkedin": "linkedin"
   },
   "home": {
     "powered_by": "Powered by Flutter ({version:String})"
