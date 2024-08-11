@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
 import '../../../../gen/assets.gen.dart';
@@ -35,7 +36,10 @@ class HomeScreen extends StatelessWidget {
                   leadingWidth: 24.0 + 48,
                   leading: Padding(
                     padding: const EdgeInsets.only(left: 24.0, right: 8.0),
-                    child: CircleAvatar(child: ClipOval(child: Assets.splash.image(fit: BoxFit.fitHeight))),
+                    child: GestureDetector(
+                      onTap: location == Routes.homeRoute ? null : () => context.go(Routes.homeRoute),
+                      child: CircleAvatar(child: ClipOval(child: Assets.splash.image(fit: BoxFit.fitHeight))),
+                    ),
                   ),
                 )
               : AppBar(),
