@@ -1,11 +1,11 @@
-import 'package:egorozh_cv/features/features.dart';
-import 'package:egorozh_cv/i18n/translations.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'core/ui/managers/app_cubit.dart';
 import 'core/ui/theme/themes.dart';
+import 'features/features.dart';
+import 'i18n/translations.g.dart';
 import 'locator/locator.dart';
 import 'router/router.dart';
 
