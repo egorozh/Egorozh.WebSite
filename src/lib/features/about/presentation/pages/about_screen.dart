@@ -10,7 +10,8 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenType = AdaptiveHelper.getScreenType(context);
 
-    return Padding(
+    return SingleChildScrollView(
+        child: Padding(
       padding: EdgeInsets.all(
         switch (screenType) {
           ScreenType.desktop => 80,
@@ -19,8 +20,8 @@ class AboutScreen extends StatelessWidget {
           ScreenType.watch => 12,
         },
       ),
-      child: SingleChildScrollView(child: _WelcomeText(screenType: screenType)),
-    );
+      child: _WelcomeText(screenType: screenType),
+    ));
   }
 }
 
@@ -34,7 +35,7 @@ class _WelcomeText extends StatelessWidget {
     final texts = Theme.of(context).textTheme;
 
     final style = switch (screenType) {
-      ScreenType.desktop => texts.displayMedium,
+      ScreenType.desktop => texts.displaySmall,
       _ => texts.headlineSmall,
     };
 

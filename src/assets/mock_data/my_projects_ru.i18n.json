@@ -1,5 +1,10 @@
 [
   {
+    "title": "X-Filer Plus",
+    "description": "Кроссплатформенный проводник файлов с вкладочным интерфейсом, похожий на Google Chrome для Windows и MacOS",
+    "url": "https://x-filer.com"
+  },
+  {
     "title": "Сайт-визитка",
     "description": "Сайт-визитка на flutter-web",
     "url": "https://github.com/egorozh/Egorozh.WebSite"
@@ -13,11 +18,6 @@
     "title": "X-Filer",
     "description": "Проводник файлов с вкладочным интерфейсом, похожий на Google Chrome",
     "url": "https://github.com/egorozh/X-Filer"
-  },
-  {
-    "title": "X-Filer Plus",
-    "description": "Кроссплатформенный проводник файлов с вкладочным интерфейсом, похожий на Google Chrome для Windows и MacOS",
-    "url": "https://x-filer.com"
   },
   {
     "title": "Egorozh.ColorPicker",

@@ -13,16 +13,29 @@ class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        for (final item in navItems) ...[
-          NavigationItem(info: item, currentLocation: currentLocation, forDrawer: false),
-          const SizedBox(width: 12),
-        ],
-        const Spacer(),
-        const ThemeSwitch(),
-        const SizedBox(width: 20),
-        const LangSwitch(),
-        const SizedBox(width: 20),
+        Expanded(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (final item in navItems) ...[
+                NavigationItem(info: item, currentLocation: currentLocation, forDrawer: false),
+                const SizedBox(width: 12),
+              ],
+            ],
+          ),
+        ),
+        const Row(
+          children: [
+            ThemeSwitch(),
+            SizedBox(width: 20),
+            LangSwitch(),
+            SizedBox(width: 20),
+          ],
+        )
       ],
     );
   }

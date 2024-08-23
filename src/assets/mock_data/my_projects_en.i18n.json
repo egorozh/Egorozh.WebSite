@@ -1,7 +1,12 @@
 [
   {
-    "title": "Landing Page",
-    "description": "Landing page built with flutter-web",
+    "title": "X-Filer Plus",
+    "description": "Cross-platform file manager with a tabbed interface, similar to Google Chrome for Windows and MacOS",
+    "url": "https://x-filer.com"
+  },
+  {
+    "title": "My Website",
+    "description": "My Website built with flutter-web",
     "url": "https://github.com/egorozh/Egorozh.WebSite"
   },
   {
@@ -13,11 +18,6 @@
     "title": "X-Filer",
     "description": "File manager with a tabbed interface, similar to Google Chrome",
     "url": "https://github.com/egorozh/X-Filer"
-  },
-  {
-    "title": "X-Filer Plus",
-    "description": "Cross-platform file manager with a tabbed interface, similar to Google Chrome for Windows and MacOS",
-    "url": "https://x-filer.com"
   },
   {
     "title": "Egorozh.ColorPicker",
