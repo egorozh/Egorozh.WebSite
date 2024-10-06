@@ -17,8 +17,8 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  slang: ^3.31.1
-  slang_flutter: ^3.31.0
+  slang: ^3.32.0
+  slang_flutter: ^3.32.0
   slang_gpt: ^0.10.3
 
   cupertino_icons: ^1.0.8
@@ -49,7 +49,7 @@ dev_dependencies:
   freezed: ^2.5.7
   injectable_generator: ^2.6.2
   json_serializable: ^6.8.0
-  slang_build_runner: 3.31.0
+  slang_build_runner: ^3.32.0
 
 flutter:
   uses-material-design: true
