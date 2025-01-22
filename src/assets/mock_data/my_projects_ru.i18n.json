@@ -5,6 +5,11 @@
     "url": "https://x-filer.com"
   },
   {
+    "title": "Slang.Net",
+    "description": "Библиотека для локализации на C#",
+    "url": "https://github.com/egorozh/Slang.NET"
+  },
+  {
     "title": "Сайт-визитка",
     "description": "Сайт-визитка на flutter-web",
     "url": "https://github.com/egorozh/Egorozh.WebSite"

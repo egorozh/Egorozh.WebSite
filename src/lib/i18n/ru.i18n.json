@@ -1,0 +1,74 @@
+{
+  "title": "Желудков Егор",
+  "core": {
+    "failure_content": {
+      "try_again": "Попробовать снова",
+      "load_error": "Ошибка загрузки"
+    }
+  },
+  "about": {
+    "title": "Обо мне",
+    "welcome_text(rich)": "Всем привет! Меня зовут {accent(Егор!)}\n\nЯ являюсь разработчиком мобильных и десктопных приложений. Мой карьерный путь начался с 2018 года. Начинал с разработки векторного редактора на {accent(WPF)}, предназначенного для моделирования систем безопасности.\n\nЗатем разрабатывал крупное мобильное приложение на {accent(Xamarin Native)}. C конца 2023 года переключился на разработку мобильного приложения на {accent(Flutter)}, на котором и сделан данный сайт-визитка {accent(:))}"
+  },
+  "blog": {
+    "title": "Блог",
+    "blog_screen": {
+      "article_tile": {
+        "read_more": "Читать далее"
+      }
+    }
+  },
+  "contacts": {
+    "title": "Контакты",
+    "youtube": "youtube",
+    "github": "github",
+    "linkedin": "linkedin"
+  },
+  "home": {
+    "powered_by": "Powered by Flutter ({version:String})"
+  },
+  "my_projects": {
+    "title": "Мои проекты",
+    "projects_screen": {
+      "project_tile": {
+        "go": "Перейти"
+      }
+    }
+  },
+  "my_articles_mock": {
+    "article1": {
+      "title": "Первый взгляд на переход с Xamarin Native на Flutter",
+      "description": "В этой статье хочу поделиться своим опытом перехода с Xamarin Native на Flutter. Постараюсь сравнить два фреймворка с точки зрения личного опыта, расскажу о своих старых заблуждениях касательно декларативных фреймворков, которые развенчал опыт работы с Flutter, а в конце статьи порассуждаю о своем идеальном мобильном фреймворке мечты."
+    },
+    "article2": {
+      "title": "Простая локализация .NET приложений с помощью Slang.Net",
+      "description": "В статье я хочу поделиться знаниями о том, как быстро и легко локализовать .NET-приложение с помощью собственного решения для локализации — Slang.Net."
+    }
+  },
+  "my_projects_mock": {
+    "project1": {
+      "title": "Сайт-визитка",
+      "description": "Сайт-визитка на flutter-web"
+    },
+    "project2": {
+      "title": "Slang.Net",
+      "description": "Библиотека для локализации на C#"
+    },
+    "project3": {
+      "title": "Tabalonia",
+      "description": "Библиотека для создания вкладочного интерфейса как в браузерах"
+    },
+    "project4": {
+      "title": "X-Filer",
+      "description": "Проводник файлов с вкладочным интерфейсом, похожий на Google Chrome"
+    },
+    "project5": {
+      "title": "X-Filer Plus",
+      "description": "Кроссплатформенный проводник файлов с вкладочным интерфейсом, похожий на Google Chrome для Windows и MacOS"
+    },
+    "project6": {
+      "title": "Egorozh.ColorPicker",
+      "description": "ColorPicker для AvaloniaUI и WPF"
+    }
+  }
+}

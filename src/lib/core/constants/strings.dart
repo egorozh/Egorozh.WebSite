@@ -1,1 +1,1 @@
-const String flutterVersion = '3.24.0';
+const String flutterVersion = '3.27.1';
